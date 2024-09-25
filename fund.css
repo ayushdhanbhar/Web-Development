@@ -1,0 +1,120 @@
+*{
+    margin:0px;
+    padding:0px;
+    box-sizing:border-box;
+  }
+#und{
+background-image: url('MAIN\ \(1\).png');
+background-size:cover;
+background-repeat:no-repeat;
+background-position:top bottom;
+height:800px;
+display: flex;
+flex-direction:column;
+align-items: center;
+background-position: center;
+animation-name:myani;
+animation-duration:7s ;
+animation-timing-function:linear;
+animation-iteration-count:infinte;
+}
+div p{
+display: flex;
+justify-content: space-between;
+}
+.row{
+    display: flex;
+   background-color: rgb(15, 199, 181);
+   justify-content: space-evenly;
+   height:200px;
+   margin-top:0;
+}
+a{
+    color: black;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-decoration:none;
+}
+ul{
+    display: flex;
+    gap:20px;
+}
+.footer-contact{
+   margin-top:75px;
+}
+.footer-logo{
+    margin-top:75px;
+}
+h4{
+    font-size: 20px;
+}
+*ul{
+    text-decoration: none;
+}
+h1{
+    display: flex;
+    color: aliceblue;
+    font-weight: 1000;
+    justify-content: flex-end;
+}
+        #heading1{
+            margin-top: 55px;
+            background-color: whitesmoke;
+            border-radius: 50px;
+            width:75%;
+            height: 65px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            padding-right: 15px;
+            padding-left: 15px;
+        }
+        a{
+            font-weight: 300;
+            text-decoration: none;
+        }
+        #head1{
+            display: flex;
+            position: relative;
+            left:500px;
+            gap: 20px;
+        }
+        *{
+            margin:0px;
+            padding:0px;
+            box-sizing:border-box;
+          }
+      
+          @keyframes myani{
+            0%{
+              background-image:url('hush.jpg')
+            }
+            35%{
+              background-image:url('hush_2.jpg')
+            }
+            75%{
+              background-image:url('und.jpg')
+            }
+          
+          }
+          .contain{
+            height: 60px;
+            background-color: rgb(56, 93, 93);
+            color:rgb(202, 198, 195);
+            display: flex;
+            justify-content: center;
+            text-align: center;
+          }
+          h5 {
+            margin-top: 20px;
+           /* color: aliceblue;*/
+            font-weight: 900;
+          }
+          /*last but not least*/
+       .foot1{
+        background-color: aquamarine;
+        height: 400px;
+       }
+       .space{
+        height:700px;
+       }
