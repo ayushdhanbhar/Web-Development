@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='register.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <div class="form-box">
+            <h1 class="title">Register</h1>
+
+            <!-- Display flash messages -->
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <div class="error-message">
+                {% for message in messages %}
+                <p>{{ message }}</p>
+                {% endfor %}
+            </div>
+            {% endif %}
+            {% endwith %}
+
+
+            <!-- Registration form -->
+            <form action="/register" method="POST">
+                <!-- Full Name Input -->
+                <div class="input-box">
+                    <input type="text" name="fullname" required>
+                    <label>Full Name</label>
+                </div>
+                <!-- Email Input -->
+                <div class="input-box">
+                    <input type="email" name="email" required>
+                    <label>Email</label>
+                </div>
+                <!-- Username Input -->
+                <div class="input-box">
+                    <input type="text" name="username" required>
+                    <label>Username</label>
+                </div>
+                <!-- Password Input -->
+                <div class="input-box">
+                    <input type="password" name="password" required>
+                    <label>Password</label>
+                </div>
+                <!-- Submit Button -->
+                <button type="submit" class="btn">Register</button>
+            </form>
+            <p class="register">
+                Already have an account?
+                <a href="{{ url_for('login') }}">Sign in here</a>
+            </p>
+        </div>
+    </div>
+</body>
+
+</html>

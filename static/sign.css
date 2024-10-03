@@ -1,0 +1,86 @@
+/* Fullscreen Background Image with Blur */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+}
+
+/* Form box styling */
+.form-box {
+    background-color: rgba(255, 255, 255, 0.9); /* White background with transparency */
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+}
+
+/* Title styling */
+.title {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2em;
+}
+
+/* Input field styling */
+.input-box {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.input-box input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+.input-box label {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    color: #666;
+    font-size: 0.9em;
+    transition: 0.2s;
+}
+
+.input-box input:focus ~ label,
+.input-box input:not(:focus):valid ~ label {
+    top: -10px;
+    left: 5px;
+    font-size: 0.8em;
+    color: #3c7d8a;
+}
+
+/* Submit button */
+.btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #3c7d8a;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #2c5f6b;
+}
+
+/* Register link */
+.register {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.register a {
+    color: #3c7d8a;
+    text-decoration: none;
+}
+
+.register a:hover {
+    text-decoration: underline;
+}

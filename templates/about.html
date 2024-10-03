@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About us</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename = 'about.css')}}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  </head>
+  <div class="und">
+    <h1 id="one">ABOUT US</h1>
+  </div>
+
+  <style>
+.und{
+  background-image: url("{{ url_for('static', filename='images/j2.jpeg') }}");
+  background-repeat:no-repeat;
+   background-position: top bottom;
+   background-size: cover;
+   height:600px;
+   position: sticky;
+}
+
+.und {
+  background-image: url("{{ url_for('static', filename='images/satkarma.png') }}");
+  background-size: cover; /* Ensures the image covers the section */
+  background-repeat: no-repeat; /* Prevents image repetition */
+  background-position: center; /* Centers the image */
+  height: 400px; /* Sets a fixed height */
+  width: 100%; /* Full width */
+  display: flex;
+  justify-content: center; /* Centers content horizontally */
+  align-items: center; /* Centers content vertically */
+  text-align: center; /* Ensures text is centered */
+}
+
+ .nav{
+  height:500px;
+  background-image: url("{{ url_for('static', filename='images/j7.jpeg') }}");
+  background-size:cover;
+  background-repeat:no-repeat;
+  background-position:top bottom;
+  margin-left:10px;
+  margin-right:10px;
+  margin:10px;
+ }
+
+.eox1{
+ height:220px;
+ width:220px;
+ border-radius:50%;
+ background-image: url("{{ url_for('static', filename='images/girl.png') }}");
+ background-size: cover;
+ background-repeat:no-repeat;
+}
+.eox2{
+  height:220px;
+ width:220px;
+   border-radius:50%;
+   background-image: url("{{ url_for('static', filename='images/ayush.jpg') }}");
+   background-size: cover;
+   background-repeat:no-repeat;
+ }
+ .eox3{
+  height:220px;
+  width:220px;
+  border-radius:50%;
+  background-image: url("{{ url_for('static', filename='images/solo.jpg') }}");
+  background-size: cover;
+  background-repeat:no-repeat;
+}
+ 
+.oox4{
+  height:220px;
+ width:220px;
+  border-radius:50%;
+  background-image: url("{{ url_for('static', filename='images/om2.jpg') }}");
+  background-size: cover;
+  background-repeat:no-repeat;
+ }
+ .oox5{
+  height:220px;
+  width:220px;
+    border-radius:50%;
+    background-image: url("{{ url_for('static', filename='images/harsh.jpg') }}");
+    background-size: cover;
+    background-repeat:no-repeat;
+  }
+  .eox6{
+    height:220px;
+    width:220px;
+    border-radius:50%;
+    background-image: url("{{ url_for('static', filename='images/prashik.jpg') }}");
+    background-size: cover;
+    background-repeat:no-repeat;
+  }
+
+.cex{
+  height:400px;
+  width:600px;
+  background-image: url("{{ url_for('static', filename='images/j2.jpeg') }}");
+  background-size:cover;
+  background-repeat:no-repeat;
+  background-position:top bottom;
+}
+.cvx{
+  height:400px;
+  width:600px;
+  background-image: url("{{ url_for('static', filename='images/j1.jpeg') }}");
+  background-size:cover;
+  background-repeat:no-repeat;
+  background-position:top bottom;
+}
+  </style>
+ <body>
+  <div id="und">
+    <nav class="navbar">
+      <div class="cont">
+        <div class="logo">
+          <a href="#">SatKarma</a>
+        </div>
+        <div class="nav-search">
+          <select class="search-select">
+            <option>All</option>
+          </select>
+          <input placeholder="Search NGO" class="search-input">
+          <div class="search-icon">
+            <i class="fa-solid fa-magnifying-glass" class="search-icon"></i>
+          </div>
+        </div>
+
+        <ul class="nav-links">
+          <li><a href="/homepage">Home</a></li>
+          <li><a href="/about">About Us</a></li>
+          <li><a href="/donate">Donate</a></li>
+          <li><a href="/contact">Contact Us</a></li>
+          <li><a href="/logout">Logout</a></li>
+        </ul>
+        <div class="menu-icon">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </nav>
+  </div>
+  <!-- Mission Statement Section -->
+  <div style="text-align: center; margin: 40px;">
+    <h2>
+      Satkarma foundation is a non-profit organization dedicated to empowering underserved communities, promoting education, healthcare, women empowerment, and more. Our founding in 2024 has led us to work tirelessly to create lasting change through advocacy, community-driven initiatives, and sustainable development. Our team is passionate about equality, opportunity, and justice. We believe that by working together, we can create a world where everyone has the chance to thrive. We are committed to making a real difference in the lives of those who need it most. Join us on our mission to create a better future for all.
+    </h2>
+  </div>
+
+  <!-- Events Section -->
+  <h1 id="two" style="text-align: center;">Our Events</h1>
+  <div class="nav"></div>
+
+  <div class="part">
+    <div class="cex"></div>
+    <div class="cvx"></div>
+  </div>
+
+  <!-- Video Section -->
+  <div style="display: flex; justify-content: center; align-items: center; height: 100vh; margin-bottom: 40px;">
+    <video id="video" width="1240" height="360" controls style="max-width: 100%; height: auto;">
+      <source src="{{ url_for('static', filename='images/video.mp4') }}" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+
+  <!-- Officers Section -->
+  <p id="solo" style="text-align: center; font-size: 24px; font-weight: bold; color: #333; margin: 20px 0; padding: 10px; border-radius: 100px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1);">
+    These are our Officers
+  </p>
+
+  <!-- CEO, COO, CTO -->
+  <div class="eoxmain" style="display: flex; justify-content: space-around; margin-bottom: 40px;">
+    <div class="eox1">
+      <p id="ede" style="text-align: center;">CEO (Chief Executive Officer)</p>
+    </div>
+    <div class="eox2">
+      <p id="ede" style="text-align: center;">COO (Chief Operating Officer)</p>
+    </div>
+    <div class="eox3">
+      <p id="ede" style="text-align: center;">CTO (Chief Technology Officer)</p>
+    </div>
+  </div>
+
+  <div class="stop"></div>
+
+  <!-- CFO, CMO, CHRO -->
+  <div class="eoxmain2" style="display: flex; justify-content: space-around;">
+    <div class="oox4">
+      <p id="ede" style="text-align: center;">CFO (Chief Financial Officer)</p>
+    </div>
+    <div class="oox5">
+      <p id="ede" style="text-align: center;">CMO (Chief Marketing Officer)</p>
+    </div>
+    <div class="eox6">
+      <p id="ede" style="text-align: center;">CHRO (Chief Human Resources Officer)</p>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="ayush2" style="display: flex; justify-content: space-around; margin-top: 40px;">
+      <ul>
+        <p>Get to Know Us</p>
+        <a>Mission</a>
+        <a>Vision</a>
+        <a>Funding And Resources</a>
+        <a>Governance Structure</a>
+        <a>Volunteer and Community Engagement</a>
+        <a>Challenges and Opportunities</a>
+      </ul>
+
+      <ul>
+        <p>Make Money with Us</p>
+        <a>Donations</a>
+        <a>Grants</a>
+        <a>Fundraising Events</a>
+        <a>Corporate Sponsorships</a>
+        <a>Membership Programs</a>
+        <a>Self-Publish With Us</a>
+        <a>See More Make Money With Us</a>
+      </ul>
+
+      <ul>
+        <p>NGO Payment Product</p>
+        <a>Online Donation Platforms</a>
+        <a>Recurring Donations</a>
+        <a>Mobile Payment Solutions</a>
+        <a>Event Ticketing and Registration</a>
+      </ul>
+
+      <ul>
+        <p>Let Us Help You</p>
+        <a>Community Support and Empowerment</a>
+        <a>Advocacy and Awareness</a>
+        <a>Emergency Relief and Support</a>
+        <a>Partnerships and Collaborations</a>
+        <a>Educational Programs and Workshops</a>
+        <a>Health and Wellness Services</a>
+        <a>Help</a>
+      </ul>
+    </div>
+
+    <div class="ayush4">
+      <div class="pages" style="text-align: center; margin-top: 20px;">
+        <a>Condition of Use</a>
+        <a>Privacy Notice</a>
+        <a>Consumer Health Data Privacy Disclosure</a>
+        <a>Your Ads Privacy Choices</a>
+      </div>
+      <div class="copyright" style="text-align: center; margin-top: 20px;">
+        © 2024-207, Satkarma.com, Inc. or its affiliates
+      </div>
+    </div>
+  </footer>
+</body>
+
+    </html>

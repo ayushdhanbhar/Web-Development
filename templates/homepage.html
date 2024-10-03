@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='homepage.css') }}">
+</head>
+<style>
+  #und{
+background-image: url("{{ url_for('static', filename='images/satkarma.png') }}");
+background-size:cover;
+position: sticky;
+background-repeat:no-repeat;
+background-position:top bottom;
+height:600px;
+display: flex;
+flex-direction:column;
+align-items: center;
+background-position: center;
+animation-name:myani;
+animation-duration:7s ;
+animation-timing-function:linear;
+animation-iteration-count:infinte;
+}
+.box3{
+background-image: url("{{ url_for('static', filename='images/j2.jpeg') }}");
+background-size: cover;
+background-repeat:no-repeat;
+}
+
+.wox3{
+  height:400px;
+  width:50%;
+  background-image: url("{{ url_for('static', filename='images/j5.jpg') }}");
+  background-size: cover;
+  background-repeat:no-repeat;
+}
+.wox4{
+    height:400px;
+    width:50%;
+    background-image: url("{{ url_for('static', filename='images/j6.jpg') }}");
+    background-size: cover;
+    background-repeat:no-repeat;
+  }
+  .woxsub{
+      display: flex;
+      justify-content: space-evenly;
+      margin:5px 5px;
+      gap: 5px;
+   }
+  .mu{
+      height: 500px;
+      background-image: url("{{ url_for('static', filename='images/j7.jpeg') }}");
+      background-size: cover;
+    background-repeat:no-repeat;
+  } 
+</style>
+
+<body>
+  <div id="und">
+    <nav class="navbar">
+      <div class="cont">
+        <div class="logo">
+          <a href="#">SatKarma</a>
+        </div>
+        <div class="nav-search">
+          <select class="search-select">
+            <option>All</option>
+          </select>
+          <input placeholder="Search NGO" class="search-input">
+          <div class="search-icon">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </div>
+        </div>
+
+        <ul class="nav-links">
+          <li><a href="/homepage">Home</a></li>
+          <li><a href="/about">About Us</a></li>
+          <li><a href="/donate">Donate</a></li>
+          <li><a href="/contact">Contact Us</a></li>
+          <li><a href="/logout">Logout</a></li>
+        </ul>
+        <div class="menu-icon">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <div class="mu"></div>
+
+  <div class="woxsub">
+    <div class="wox3">
+      <div class="wox-contain"></div>
+    </div>
+    <div class="wox4">
+      <div class="wox-contain"></div>
+    </div>
+  </div>
+
+  <div class="stucture">
+    <div class="box3 box">
+      <div class="box-contain"></div>
+    </div>
+
+    <div class="ew">
+      <h1 id="wq">Get Involved</h1>
+      <p id="ewq">
+        We invite you to be part of our journey. Whether through volunteering, donating, or spreading the word, your support is crucial in helping us achieve our mission. Together, we can [call to action, such as "create lasting change," "empower communities," etc.].
+      </p>
+      <div class="nb"></div>
+    </div>
+
+    <div class="main">
+      <div class="cap1">
+        <h1>What We Do</h1>
+        <p>
+          Our platform serves as a comprehensive hub where NGOs can outline their specific needs, and donors can find the causes that resonate with them. We work closely with NGOs to understand their projects, goals, and challenges, launching tailored fundraising campaigns that clearly communicate their needs. Donors are given the flexibility to choose how they wish to contribute—whether it’s through financial support, in-kind donations, or volunteering. By connecting compassionate donors with worthy causes, we help build a global community united by the desire to make a positive impact.
+        </p>
+      </div>
+
+      <div class="cap2">
+        <h1>Who We Are</h1>
+        <p>
+          We are a passionate team of innovators committed to making a difference in the world through the power of technology. As a project-turned-startup, we are driven by a common goal: to create a bridge between NGOs and generous donors from around the globe. Our diverse team brings together expertise from various fields, united by a shared belief that technology can be a force for good. We aim to simplify the process of giving, making it easier and more accessible for donors to connect with the causes they care about most.
+        </p>
+      </div>
+
+      <div class="cap3">
+        <h1>Why We Do It</h1>
+        <p>
+          We believe that every organization working towards positive change deserves the support they need to thrive. Often, the most impactful NGOs struggle to connect with the right resources and donors who can make a significant difference in their efforts. Our mission is to empower these organizations by amplifying their voices and ensuring their needs are heard and met. By facilitating transparent and targeted fundraising, we help donors make informed contributions that have a direct and meaningful impact on communities in need.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <main></main>
+
+  <div class="contain">
+    <h5><a href="#">Back to top</a></h5>
+  </div>
+
+  <footer>
+    <div class="ayush2">
+      <ul>
+        <p>Get to Know Us</p>
+        <a href="#">Mission</a>
+        <a href="#">Vision</a>
+        <a href="#">Funding And Resources</a>
+        <a href="#">Governance Structure</a>
+        <a href="#">Volunteer and Community Engagement</a>
+        <a href="#">Challenges and Opportunities</a>
+      </ul>
+
+      <ul>
+        <p>Make Money with Us</p>
+        <a href="#">Donations</a>
+        <a href="#">Grants</a>
+        <a href="#">Fundraising Events</a>
+        <a href="#">Corporate Sponsorships</a>
+        <a href="#">Membership Programs</a>
+        <a href="#">Self-Publish With Us</a>
+        <a href="#">See More Make Money With Us</a>
+      </ul>
+
+      <ul>
+        <p>NGO Payment Product</p>
+        <a href="#">Online Donation Platforms</a>
+        <a href="#">Recurring Donations</a>
+        <a href="#">Mobile Payment Solutions</a>
+        <a href="#">Event Ticketing and Registration</a>
+      </ul>
+
+      <ul>
+        <p>Let Us Help You</p>
+        <a href="#">Community Support and Empowerment</a>
+        <a href="#">Advocacy and Awareness</a>
+        <a href="#">Emergency Relief and Support</a>
+        <a href="#">Partnerships and Collaborations</a>
+        <a href="#">Educational Programs and Workshops</a>
+        <a href="#">Health and Wellness Services</a>
+        <a href="#">Help</a>
+      </ul>
+    </div>
+
+    <div class="ayush4">
+      <div class="pages">
+        <a href="#">Condition of Use</a>
+        <a href="#">Privacy Notice</a>
+        <a href="#">Consumer Health Data Privacy Disclosure</a>
+        <a href="#">Your Ads Privacy Choices</a>
+      </div>
+      <div class="copyright">© 2024-207, Satkarma.com, Inc. or its affiliates</div>
+    </div>
+  </footer>
+</body>
+
+    </html>
