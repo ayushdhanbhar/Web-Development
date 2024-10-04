@@ -5,7 +5,7 @@ from bson.objectid import ObjectId
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '12333'  # Replace with your actual secret key
-app.config['MONGO_URI'] = 'mongodb+srv://aayush:aayush@cluster0.1fi6w.mongodb.net/db'  # MongoDB connection URI
+app.config['MONGO_URI'] = 'mongodb+srv://vedant:vedant@portfolio.e8ky0.mongodb.net/db'  # MongoDB connection URI
 
 mongo = PyMongo(app)
 
