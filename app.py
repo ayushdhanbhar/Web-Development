@@ -133,5 +133,9 @@ def thank_you():
 def about():
     return render_template('about.html')
 
+@app.route('/ngo1')
+def ngo1():
+    return render_template('ngo1.html')
+
 if __name__ == '__main__':
     app.run(debug=True)

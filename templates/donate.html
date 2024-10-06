@@ -18,16 +18,7 @@
                 <div class="logo">
                     <a href="#">SatKarma</a>
                 </div>
-                <div class="nav-search">
-                    <select class="search-select">
-                        <option>All</option>
-                    </select>
-                    <input placeholder="Search NGO" class="search-input">
-                    <div class="search-icon">
-                        <i class="fa-solid fa-magnifying-glass" class="search-icon"></i>
-                    </div>
-                </div>
-
+            
                 <ul class="nav-links">
                     <li><a href="/homepage">Home</a></li>
                     <li><a href="/about">About Us</a></li>
@@ -160,5 +151,12 @@
     </footer>
 
 </body>
+<script>
+    const menuIcon = document.getElementById('menuIcon');
+    const navLinks = document.getElementById('navLinks');
 
+    menuIcon.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+  </script>
 </html>

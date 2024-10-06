@@ -24,11 +24,7 @@ animation-duration:7s ;
 animation-timing-function:linear;
 animation-iteration-count:infinte;
 }
-.box3{
-background-image: url("{{ url_for('static', filename='images/j2.jpeg') }}");
-background-size: cover;
-background-repeat:no-repeat;
-}
+
 
 .wox3{
   height:400px;
@@ -47,8 +43,8 @@ background-repeat:no-repeat;
   .woxsub{
       display: flex;
       justify-content: space-evenly;
-      margin:5px 5px;
-      gap: 5px;
+      margin:8px 8px;
+      gap:7px;
    }
   .mu{
       height: 500px;
@@ -56,6 +52,44 @@ background-repeat:no-repeat;
       background-size: cover;
     background-repeat:no-repeat;
   } 
+  .nav-search {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      width: 500px;
+    }
+
+    .search-input {
+      width: 450px;
+      padding: 5px;
+      font-size: 16px;
+    }
+
+    .suggestions {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      border: 1px solid #ffffff;
+      background-color: #000000;
+      z-index: 999;
+      display: none;
+      max-height: 150px;
+      overflow-y: auto;
+    }
+
+    .suggestions li {
+      padding: 10px;
+      cursor: pointer;
+    }
+
+    .suggestions li:hover {
+      background-color: #191616;
+    }
+
+    .search-icon {
+      margin-right: 20px;
+    }
 </style>
 
 <body>
@@ -66,19 +100,75 @@ background-repeat:no-repeat;
           <a href="#">SatKarma</a>
         </div>
         <div class="nav-search">
-          <select class="search-select">
-            <option>All</option>
-          </select>
-          <input placeholder="Search NGO" class="search-input">
+          <input
+            type="text"
+            placeholder="Search NGO"
+            class="search-input"
+            id="searchInput"
+            oninput="showSuggestions()"
+          />
+          <ul class="suggestions" id="suggestionsList"></ul>
           <div class="search-icon">
             <i class="fa-solid fa-magnifying-glass"></i>
           </div>
         </div>
 
+        <script>
+          const ngos = [
+            { name: "NGO1", url: "/ngo1" },
+            { name: "NGO2", url: "/ngo2" },
+            { name: "NGO3", url: "/ngo3" },
+            { name: "NGO4", url: "/ngo4" },
+            { name: "NGO5", url: "/ngo5" },
+          ];
+
+          function showSuggestions() {
+            const input = document
+              .getElementById("searchInput")
+              .value.toLowerCase();
+            const suggestionsList =
+              document.getElementById("suggestionsList");
+            suggestionsList.innerHTML = "";
+
+            if (input === "") {
+              suggestionsList.style.display = "none";
+              return;
+            }
+
+            const filteredNgos = ngos.filter((ngo) =>
+              ngo.name.toLowerCase().includes(input)
+            );
+
+            if (filteredNgos.length > 0) {
+              filteredNgos.forEach((ngo) => {
+                const li = document.createElement("li");
+                li.textContent = ngo.name;
+                li.onclick = () => {
+                  window.location.href = ngo.url;
+                };
+                suggestionsList.appendChild(li);
+              });
+              suggestionsList.style.display = "block";
+            } else {
+              suggestionsList.style.display = "none";
+            }
+          }
+
+          // Hide suggestions when clicking outside
+          document.addEventListener("click", function (event) {
+            const suggestionsList =
+              document.getElementById("suggestionsList");
+            if (!event.target.closest(".nav-search")) {
+              suggestionsList.style.display = "none";
+            }
+          });
+        </script>
+
         <ul class="nav-links">
           <li><a href="/homepage">Home</a></li>
           <li><a href="/about">About Us</a></li>
           <li><a href="/donate">Donate</a></li>
+          <li><a href="/NGOS">How We Work</a></li>
           <li><a href="/contact">Contact Us</a></li>
           <li><a href="/logout">Logout</a></li>
         </ul>
@@ -101,12 +191,14 @@ background-repeat:no-repeat;
       <div class="wox-contain"></div>
     </div>
   </div>
-
-  <div class="stucture">
-    <div class="box3 box">
-      <div class="box-contain"></div>
+  <div class="woxsub">
+    <div class="wox3">
+      <div class="wox-contain"></div>
     </div>
-
+    <div class="wox4">
+      <div class="wox-contain"></div>
+    </div>
+  </div>
     <div class="ew">
       <h1 id="wq">Get Involved</h1>
       <p id="ewq">
@@ -199,5 +291,4 @@ background-repeat:no-repeat;
     </div>
   </footer>
 </body>
-
     </html>
