@@ -30,13 +30,18 @@
             </div>
     
             <ul class="nav-links">
-              <li><a href="/homepage">Home</a></li>
+              <li><a href="/">Home</a></li>
               <li><a href="/about">About Us</a></li>
               <li><a href="/NGOS">How We Work</a></li>
               <li><a href="/donate">Donate</a></li>
               <li><a href="/contact">Contact Us</a></li>
-              <li><a href="/logout">Logout</a></li>
-            </ul>
+              <li>
+                {% if 'user_id' not in session %}
+                  <a href="{{ url_for('login') }}">Sign In</a>
+                {% else %}
+                  <a href="{{ url_for('logout') }}">Logout</a>
+                {% endif %}
+              </li>            </ul>
             <div class="menu-icon">
               <span></span>
               <span></span>

@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Make a Donation - SatKarma</title>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='homepage.css') }}">
+
+    <style>
+        .transaction-container {
+            max-width: 800px;
+            margin: 150px auto 50px;
+            padding: 20px;
+        }
+        .donation-form {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #333;
+        }
+        select, input, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .amount-options {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        .amount-option {
+            padding: 10px 20px;
+            border: 1px solid #4CAF50;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .amount-option.selected {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .custom-amount {
+            display: none;
+        }
+        .custom-amount.show {
+            display: block;
+        }
+        .submit-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            width: 100%;
+        }
+        .submit-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation bar -->
+    <div class="cont">
+        <div class="logo">
+            <a href="#">SatKarma</a>
+        </div>
+        <nav class="navbar">
+            <div class="cont">
+                <div class="logo">
+                    <a href="#">SatKarma</a>
+                </div>
+                <div class="nav-search">
+                    <input type="text" placeholder="Search NGO" class="search-input" id="searchInput"
+                        oninput="showSuggestions()" />
+                    <ul class="suggestions" id="suggestionsList"></ul>
+                    <div class="search-icon">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                </div>
+
+
+                <ul class="nav-links">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/about">About Us</a></li>
+                    <li><a href="/donate">Donate</a></li>
+                    <li><a href="/NGOS">How We Work</a></li>
+                    <li><a href="/contact">Contact Us</a></li>
+                    <li>
+                        {% if 'user_id' not in session %}
+                        <a href="{{ url_for('login') }}">Sign In</a>
+                        {% else %}
+                        <a href="{{ url_for('logout') }}">Logout</a>
+                        {% endif %}
+                    </li>
+                </ul>
+                <div class="menu-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <div class="transaction-container">
+        <h1>Make a Donation</h1>
+        <div class="donation-form">
+            <form id="donationForm">
+                <div class="form-group">
+                    <label for="ngo">Select NGO</label>
+                    <select id="ngo" name="ngo" required>
+                        <option value="">Choose an NGO</option>
+                        {% for ngo in ngos %}
+                        <option value="{{ ngo._id }}">{{ ngo.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Select Amount</label>
+                    <div class="amount-options">
+                        <div class="amount-option" data-amount="100">₹100</div>
+                        <div class="amount-option" data-amount="500">₹500</div>
+                        <div class="amount-option" data-amount="1000">₹1000</div>
+                        <div class="amount-option" data-amount="custom">Custom</div>
+                    </div>
+                    <div class="custom-amount">
+                        <input type="number" id="customAmount" placeholder="Enter custom amount">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Message (Optional)</label>
+                    <textarea id="message" name="message" rows="4" placeholder="Add a message to the NGO"></textarea>
+                </div>
+
+                <button type="submit" class="submit-button">Proceed to Pay</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const amountOptions = document.querySelectorAll('.amount-option');
+            const customAmountDiv = document.querySelector('.custom-amount');
+            const customAmountInput = document.getElementById('customAmount');
+            let selectedAmount = null;
+
+            amountOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    amountOptions.forEach(opt => opt.classList.remove('selected'));
+                    this.classList.add('selected');
+                    
+                    if (this.dataset.amount === 'custom') {
+                        customAmountDiv.classList.add('show');
+                        selectedAmount = null;
+                    } else {
+                        customAmountDiv.classList.remove('show');
+                        selectedAmount = parseInt(this.dataset.amount);
+                    }
+                });
+            });
+
+            document.getElementById('donationForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const ngoId = document.getElementById('ngo').value;
+                const message = document.getElementById('message').value;
+                const amount = selectedAmount || parseInt(customAmountInput.value);
+
+                if (!ngoId) {
+                    alert('Please select an NGO');
+                    return;
+                }
+
+                if (!amount) {
+                    alert('Please select or enter an amount');
+                    return;
+                }
+
+                // Send data to server to create order
+                fetch('/create_order', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        ngo_id: ngoId,
+                        amount: amount,
+                        message: message
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.order_id) {
+                        const options = {
+                            key: '{{ razorpay_key_id }}', // Your Razorpay Key ID
+                            amount: amount * 100,
+                            currency: 'INR',
+                            name: 'SatKarma',
+                            description: 'Donation',
+                            order_id: data.order_id,
+                            handler: function (response) {
+                                // Send payment verification to server
+                                fetch('/verify_payment', {
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/json',
+                                    },
+                                    body: JSON.stringify({
+                                        razorpay_payment_id: response.razorpay_payment_id,
+                                        razorpay_order_id: response.razorpay_order_id,
+                                        razorpay_signature: response.razorpay_signature
+                                    })
+                                })
+                                .then(response => response.json())
+                                .then(data => {
+                                    if (data.status === 'success') {
+                                        window.location.href = '/thank_you';
+                                    }
+                                });
+                            },
+                            prefill: {
+                                name: '{{ user.fullname }}',
+                                email: '{{ user.email }}'
+                            },
+                            theme: {
+                                color: '#4CAF50'
+                            }
+                        };
+                        const rzp = new Razorpay(options);
+                        rzp.open();
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

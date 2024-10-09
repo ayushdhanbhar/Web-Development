@@ -113,64 +113,20 @@ animation-iteration-count:infinte;
           </div>
         </div>
 
-        <script>
-          const ngos = [
-            { name: "NGO1", url: "/ngo1" },
-            { name: "NGO2", url: "/ngo2" },
-            { name: "NGO3", url: "/ngo3" },
-            { name: "NGO4", url: "/ngo4" },
-            { name: "NGO5", url: "/ngo5" },
-          ];
-
-          function showSuggestions() {
-            const input = document
-              .getElementById("searchInput")
-              .value.toLowerCase();
-            const suggestionsList =
-              document.getElementById("suggestionsList");
-            suggestionsList.innerHTML = "";
-
-            if (input === "") {
-              suggestionsList.style.display = "none";
-              return;
-            }
-
-            const filteredNgos = ngos.filter((ngo) =>
-              ngo.name.toLowerCase().includes(input)
-            );
-
-            if (filteredNgos.length > 0) {
-              filteredNgos.forEach((ngo) => {
-                const li = document.createElement("li");
-                li.textContent = ngo.name;
-                li.onclick = () => {
-                  window.location.href = ngo.url;
-                };
-                suggestionsList.appendChild(li);
-              });
-              suggestionsList.style.display = "block";
-            } else {
-              suggestionsList.style.display = "none";
-            }
-          }
-
-          // Hide suggestions when clicking outside
-          document.addEventListener("click", function (event) {
-            const suggestionsList =
-              document.getElementById("suggestionsList");
-            if (!event.target.closest(".nav-search")) {
-              suggestionsList.style.display = "none";
-            }
-          });
-        </script>
 
         <ul class="nav-links">
-          <li><a href="/homepage">Home</a></li>
+          <li><a href="/">Home</a></li>
           <li><a href="/about">About Us</a></li>
           <li><a href="/donate">Donate</a></li>
           <li><a href="/NGOS">How We Work</a></li>
           <li><a href="/contact">Contact Us</a></li>
-          <li><a href="/logout">Logout</a></li>
+          <li>
+              {% if 'user_id' not in session %}
+                <a href="{{ url_for('login') }}">Sign In</a>
+              {% else %}
+                <a href="{{ url_for('logout') }}">Logout</a>
+              {% endif %}
+            </li>
         </ul>
         <div class="menu-icon">
           <span></span>

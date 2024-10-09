@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ ngo.name }} - SatKarma</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='homepage.css') }}">
+
+    <style>
+        .ngo-details-container {
+            max-width: 1200px;
+            margin: 150px auto 50px;
+            padding: 0 20px;
+        }
+        .ngo-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+        .ngo-logo {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-right: 30px;
+        }
+        .ngo-info {
+            flex-grow: 1;
+        }
+        .ngo-title {
+            font-size: 36px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        .ngo-location {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 15px;
+        }
+        .ngo-causes {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .cause-tag {
+            background-color: #4CAF50;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+        }
+        .ngo-description {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #444;
+            margin-bottom: 30px;
+        }
+        .action-buttons {
+            display: flex;
+            gap: 20px;
+        }
+        .action-button {
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        .donate-button {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .donate-button:hover {
+            background-color: #45a049;
+        }
+        .contact-button {
+            background-color: #2196F3;
+            color: white;
+        }
+        .contact-button:hover {
+            background-color: #1e87db;
+        }
+        .ngo-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+        }
+        .ngo-main {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .ngo-sidebar {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .contact-info h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .contact-item {
+            margin-bottom: 15px;
+        }
+        .contact-item strong {
+            display: block;
+            margin-bottom: 5px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation bar -->
+    <div class="cont">
+        <div class="logo">
+            <a href="#">SatKarma</a>
+        </div>
+        <nav class="navbar">
+            <div class="cont">
+                <div class="logo">
+                    <a href="#">SatKarma</a>
+                </div>
+                <div class="nav-search">
+                    <input type="text" placeholder="Search NGO" class="search-input" id="searchInput"
+                        oninput="showSuggestions()" />
+                    <ul class="suggestions" id="suggestionsList"></ul>
+                    <div class="search-icon">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                </div>
+
+
+                <ul class="nav-links">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/about">About Us</a></li>
+                    <li><a href="/donate">Donate</a></li>
+                    <li><a href="/NGOS">How We Work</a></li>
+                    <li><a href="/contact">Contact Us</a></li>
+                    <li>
+                        {% if 'user_id' not in session %}
+                        <a href="{{ url_for('login') }}">Sign In</a>
+                        {% else %}
+                        <a href="{{ url_for('logout') }}">Logout</a>
+                        {% endif %}
+                    </li>
+                </ul>
+                <div class="menu-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <div class="ngo-details-container">
+        <div class="ngo-header">
+            <img src="{{ ngo.image_url }}" alt="{{ ngo.name }}" class="ngo-image">
+                <div class="ngo-info">
+                <h1 class="ngo-title">{{ ngo.name }}</h1>
+                <p class="ngo-location">{{ ngo.location }}</p>
+                <div class="ngo-causes">
+                    {% for cause in ngo.causes %}
+                    <span class="cause-tag">{{ cause }}</span>
+                    {% endfor %}
+                </div>
+                <div class="action-buttons">
+                    <a href="{{ url_for('donate') }}" class="action-button donate-button">Donate Now</a>
+                    <a href="#contact" class="action-button contact-button">Contact NGO</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="ngo-content">
+            <div class="ngo-main">
+                <h2>About Us</h2>
+                <p class="ngo-description">{{ ngo.description }}</p>
+                
+                <h2>Our Impact</h2>
+                <p>Here you can add detailed information about the NGO's impact, projects, and achievements.</p>
+                
+                <h2>How You Can Help</h2>
+                <p>Explain different ways people can contribute to the NGO's cause, whether through donations, volunteering, or other forms of support.</p>
+            </div>
+            
+            <div class="ngo-sidebar">
+                <div class="contact-info" id="contact">
+                    <h3>Contact Information</h3>
+                    <div class="contact-item">
+                        <strong>Email:</strong>
+                        {{ ngo.contact }}
+                    </div>
+                    <div class="contact-item">
+                        <strong>Address:</strong>
+                        {{ ngo.location }}
+                    </div>
+                    <!-- Add more contact details as needed -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer-container">
+        <div class="copyright">
+            © 2024 SatKarma. All Rights Reserved.
+        </div>
+    </div>
+</body>
+</html>
