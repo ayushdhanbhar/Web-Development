@@ -3,4 +3,3 @@ Flask-PyMongo
 gunicorn
 Werkzeug
 razorpay
-smtplib
