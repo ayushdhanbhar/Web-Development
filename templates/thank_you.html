@@ -1,11 +1,160 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thank You</title>
-</head>
-<body>
-    <h1>Thank You!</h1>    <p>for visting our website</p>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thank You!</title>
+  </head>
+  <body>
+    <style>
+      body,
+      html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: "Arial", sans-serif;
+        background: #424855;
+        overflow: hidden;
+        color: white;
+      }
+
+      /* Background Animation */
+      .background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        z-index: -1;
+      }
+
+      .circle {
+        position: absolute;
+        bottom: -150px;
+        width: 300px;
+        height: 300px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        animation: moveUp 10s infinite ease-in-out;
+        animation-delay: calc(-5s * var(--i));
+      }
+
+      .circle:nth-child(2) {
+        width: 400px;
+        height: 400px;
+        left: 20%;
+        animation-delay: calc(-8s * var(--i));
+      }
+
+      .circle:nth-child(3) {
+        width: 250px;
+        height: 250px;
+        left: 50%;
+        animation-delay: calc(-10s * var(--i));
+      }
+
+      /* Keyframes for background animation */
+      @keyframes moveUp {
+        0% {
+          bottom: -200px;
+          transform: translateX(0);
+        }
+        50% {
+          transform: translateX(100px);
+        }
+        100% {
+          bottom: 100%;
+          transform: translateX(-200px);
+        }
+      }
+
+      /* Text Animation */
+      .thank-you-container {
+        text-align: center;
+        position: relative;
+        z-index: 1;
+      }
+
+      .thank-you-text {
+        font-size: 4rem;
+        color: #4caf50;
+        opacity: 0;
+        transform: scale(0.8);
+        animation: popIn 2s forwards, colorShift 4s infinite;
+      }
+
+      .message {
+        font-size: 1.5rem;
+        color: #ccc;
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fadeInUp 2s 0.5s forwards;
+      }
+
+      .back-home {
+        display: inline-block;
+        margin-top: 20px;
+        padding: 10px 20px;
+        font-size: 1.2rem;
+        color: white;
+        background-color: #64b566;
+        text-decoration: none;
+        border-radius: 5px;
+        opacity: 0;
+        transform: translateY(50px);
+        animation: fadeInUp 2s 1s forwards, pulse 2s infinite;
+      }
+
+      /* Keyframes for text animations */
+      @keyframes popIn {
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      @keyframes fadeInUp {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.05);
+        }
+      }
+
+      @keyframes colorShift {
+        0% {
+          color: #ffffff;
+        }
+        50% {
+          color: #997d74;
+        }
+        100% {
+          color: #ffffff;
+        }
+      }
+    </style>
+    <div class="background">
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+    </div>
+    <div class="thank-you-container">
+      <h1 class="thank-you-text">Thank You!</h1>
+      <p class="message">We appreciate your support.</p>
+      <a href="contact" class="back-home">Return to the contact</a>
+    </div>
+  </body>
 </html>
