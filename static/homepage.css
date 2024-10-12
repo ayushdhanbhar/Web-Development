@@ -44,20 +44,6 @@ h1 {
   font-weight: 1000;
   justify-content: flex-end;
 }
-.wox3 {
-  height: 400px;
-  width: 50%;
-  background-image: url("{{ url_for('static', filename='images/j5.jpg') }}");
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-.wox4 {
-  height: 400px;
-  width: 50%;
-  background-image: url("{{ url_for('static', filename='images/j6.jpg') }}");
-  background-size: cover;
-  background-repeat: no-repeat;
-}
 .woxsub {
   display: flex;
   justify-content: space-evenly;

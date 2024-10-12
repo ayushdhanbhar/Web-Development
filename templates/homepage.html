@@ -29,18 +29,38 @@ animation-iteration-count:infinte;
 .wox3{
   height:400px;
   width:50%;
-  background-image: url("{{ url_for('static', filename='images/j5.jpg') }}");
+  background-image: url("{{ url_for('static', filename='images/h1.jpg') }}");
   background-size: cover;
   background-repeat:no-repeat;
 }
 .wox4{
     height:400px;
     width:50%;
-    background-image: url("{{ url_for('static', filename='images/j6.jpg') }}");
+    background-image: url("{{ url_for('static', filename='images/h2.jpg') }}");
     background-size: cover;
     background-repeat:no-repeat;
   }
-  .woxsub{
+  .wox5{
+  height:400px;
+  width:50%;
+  background-image: url("{{ url_for('static', filename='images/h3.jpg') }}");
+  background-size: cover;
+  background-repeat:no-repeat;
+}
+.wox6{
+    height:400px;
+    width:50%;
+    background-image: url("{{ url_for('static', filename='images/cep1.jpg') }}");
+    background-size: cover;
+    background-repeat:no-repeat;
+  }
+  .woxsub1{
+      display: flex;
+      justify-content: space-evenly;
+      margin:8px 8px;
+      gap:7px;
+   }
+   .woxsub2{
       display: flex;
       justify-content: space-evenly;
       margin:8px 8px;
@@ -99,21 +119,7 @@ animation-iteration-count:infinte;
         <div class="logo">
           <a href="#">SatKarma</a>
         </div>
-        <div class="nav-search">
-          <input
-            type="text"
-            placeholder="Search NGO"
-            class="search-input"
-            id="searchInput"
-            oninput="showSuggestions()"
-          />
-          <ul class="suggestions" id="suggestionsList"></ul>
-          <div class="search-icon">
-            <i class="fa-solid fa-magnifying-glass"></i>
-          </div>
-        </div>
-
-
+      
         <ul class="nav-links">
           <li><a href="/">Home</a></li>
           <li><a href="/about">About Us</a></li>
@@ -139,7 +145,7 @@ animation-iteration-count:infinte;
 
   <div class="mu"></div>
 
-  <div class="woxsub">
+  <div class="woxsub1">
     <div class="wox3">
       <div class="wox-contain"></div>
     </div>
@@ -147,11 +153,12 @@ animation-iteration-count:infinte;
       <div class="wox-contain"></div>
     </div>
   </div>
-  <div class="woxsub">
-    <div class="wox3">
+  </div>
+  <div class="woxsub2">
+    <div class="wox5">
       <div class="wox-contain"></div>
     </div>
-    <div class="wox4">
+    <div class="wox6">
       <div class="wox-contain"></div>
     </div>
   </div>

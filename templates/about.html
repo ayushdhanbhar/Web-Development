@@ -16,10 +16,24 @@
       referrerpolicy="no-referrer"
     />
   </head>
-  <div class="und">
-    <h1 id="one">ABOUT US</h1>
-  </div>
+  <section class="mission-vision-section">
+    <div class="container">
+        <h1 class="title">Satkarma Foundation</h1>
+        
+        <div class="split-container">
+            <div class="vision">
+                <h2 class="animated-heading">Our Vision</h2>
+                <p class="animated-text">To build a compassionate world where every NGO's needs are met, and no social cause is left unsupported, creating a ripple effect of positive change.</p>
+            </div>
 
+            <div class="mission">
+                <h2 class="animated-heading">Our Mission</h2>
+                <p class="animated-text">To empower NGOs by providing a transparent and user-friendly platform that connects them with donors, ensuring that every contribution reaches the right hands and creates maximum impact.</p>
+            </div>
+        </div>
+    </div>
+</section>
+    <h1 id="one">ABOUT US</h1>
   <style>
     .und {
       background-image: url("{{ url_for('static', filename='images/j2.jpeg') }}");
@@ -104,22 +118,39 @@
       background-repeat: no-repeat;
     }
 
-    .cex {
+    .cex1{
       height: 400px;
       width: 600px;
-      background-image: url("{{ url_for('static', filename='images/j2.jpeg') }}");
+      background-image: url("{{ url_for('static', filename='images/cep5.jpg') }}");
       background-size: cover;
       background-repeat: no-repeat;
       background-position: top bottom;
     }
-    .cvx {
+    .cvx1{
       height: 400px;
       width: 600px;
-      background-image: url("{{ url_for('static', filename='images/j1.jpeg') }}");
+      background-image: url("{{ url_for('static', filename='images/cep2.jpg') }}");
       background-size: cover;
       background-repeat: no-repeat;
       background-position: top bottom;
     }
+    .cex2{
+      height: 400px;
+      width: 600px;
+      background-image: url("{{ url_for('static', filename='images/cep4.jpg') }}");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: top bottom;
+    }
+    .cvx2{
+      height: 400px;
+      width: 600px;
+      background-image: url("{{ url_for('static', filename='images/cep6.jpg') }}");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: top bottom;
+    }
+
     h5 {
       margin-top: 20px;
     }
@@ -167,77 +198,11 @@
     }
   </style>
   <body>
-    <div id="und">
       <nav class="navbar">
         <div class="cont">
           <div class="logo">
             <a href="#">SatKarma</a>
           </div>
-          <div class="nav-search">
-            <input
-              type="text"
-              placeholder="Search NGO"
-              class="search-input"
-              id="searchInput"
-              oninput="showSuggestions()"
-            />
-            <ul class="suggestions" id="suggestionsList"></ul>
-            <div class="search-icon">
-              <i class="fa-solid fa-magnifying-glass"></i>
-            </div>
-          </div>
-
-          <script>
-            const ngos = [
-              { name: "NGO1", url: "/ngo1" },
-              { name: "NGO2", url: "/ngo2" },
-              { name: "NGO3", url: "/ngo3" },
-              { name: "NGO4", url: "/ngo4" },
-              { name: "NGO5", url: "/ngo5" },
-            ];
-
-            function showSuggestions() {
-              const input = document
-                .getElementById("searchInput")
-                .value.toLowerCase();
-              const suggestionsList =
-                document.getElementById("suggestionsList");
-              suggestionsList.innerHTML = "";
-
-              if (input === "") {
-                suggestionsList.style.display = "none";
-                return;
-              }
-
-              const filteredNgos = ngos.filter((ngo) =>
-                ngo.name.toLowerCase().includes(input)
-              );
-
-              if (filteredNgos.length > 0) {
-                filteredNgos.forEach((ngo) => {
-                  const li = document.createElement("li");
-                  li.textContent = ngo.name;
-                  li.onclick = () => {
-                    window.location.href = ngo.url;
-                  };
-                  suggestionsList.appendChild(li);
-                });
-                suggestionsList.style.display = "block";
-              } else {
-                suggestionsList.style.display = "none";
-              }
-            }
-
-            // Hide suggestions when clicking outside
-            document.addEventListener("click", function (event) {
-              const suggestionsList =
-                document.getElementById("suggestionsList");
-              if (!event.target.closest(".nav-search")) {
-                suggestionsList.style.display = "none";
-              }
-            });
-          </script>
-
           <ul class="nav-links">
             <li><a href="/">Home</a></li>
             <li><a href="/about">About Us</a></li>
@@ -258,81 +223,69 @@
           </div>
         </div>
       </nav>
-    </div>
-    <!-- Mission Statement Section -->
-    <div style="text-align: center; margin: 40px">
-      <h2>
-        Satkarma foundation is a non-profit organization dedicated to empowering
-        underserved communities, promoting education, healthcare, women
-        empowerment, and more. Our founding in 2024 has led us to work
-        tirelessly to create lasting change through advocacy, community-driven
-        initiatives, and sustainable development. Our team is passionate about
-        equality, opportunity, and justice. We believe that by working together,
-        we can create a world where everyone has the chance to thrive. We are
-        committed to making a real difference in the lives of those who need it
-        most. Join us on our mission to create a better future for all.
-      </h2>
-    </div>
+    <section class="mission-vision-section">
+      <div class="container">
+          <h1 class="title">Satkarma Foundation</h1>
+          <div class="split-container">
+              <!-- Vision Section -->
+              <div class="vision">
+                  <h2 class="animated-heading">Our Vision</h2>
+                  <p class="animated-text">To build a compassionate world where every NGO's needs are met, and no social cause is left unsupported, creating a ripple effect of positive change.</p>
+              </div>
+
+              <!-- Mission Section -->
+              <div class="mission">
+                  <h2 class="animated-heading">Our Mission</h2>
+                  <p class="animated-text">To empower NGOs by providing a transparent and user-friendly platform that connects them with donors, ensuring that every contribution reaches the right hands and creates maximum impact.</p>
+              </div>
+          </div>
+      </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="about-section">
+      <div class="container">
+          <h1 class="about-title">About Satkarma Foundation</h1>
+          <div class="about-content">
+              <p class="animated-text">We are committed to creating lasting change by addressing the root causes of poverty, inequality, and environmental degradation. Through collaboration, compassion, and action, we empower vulnerable populations with access to education, advocate for human rights, and promote environmental sustainability. Our mission is to ensure that every child has the opportunity to learn, all people have access to healthcare, and communities are resilient in the face of climate change.</p>
+          </div>
+      </div>
+  </section>
 
     <!-- Events Section -->
     <h1 id="two" style="text-align: center">Our Team</h1>
     <div class="nav"></div>
-
+    <h1 id="two" style="text-align: center">Our Work</h1>
     <div class="part">
-      <div class="cex">
+      <div class="cex1">
         <p id="teo">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat fugit
-          ipsa quisquam. Magnam laboriosam voluptatem sequi expedita autem nemo
-          ipsam repellendus! Magni animi quae cupiditate illum aut voluptatum
-          libero similique!
+          The NGO team shares vital information with the community, empowering individuals through knowledge and support.
         </p>
       </div>
-      <div class="cvx">
+      <div class="cvx1">
         <p id="teo">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat fugit
-          ipsa quisquam. Magnam laboriosam voluptatem sequi expedita autem nemo
-          ipsam repellendus! Magni animi quae cupiditate illum aut voluptatum
-          libero similique!
+          Connecting with dedicated NGO leaders to support community-driven initiatives and sustainable development.
         </p>
       </div>
     </div>
     <div class="part">
-      <div class="cex">
+      <div class="cex2">
         <p id="teo">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat fugit
-          ipsa quisquam. Magnam laboriosam voluptatem sequi expedita autem nemo
-          ipsam repellendus! Magni animi quae cupiditate illum aut voluptatum
-          libero similique!
+          Engaging with residents of the NGO, listening to their stories, and understanding the impact of our collective efforts.
         </p>
       </div>
-      <div class="cvx">
+      <div class="cvx2">
         <p id="teo">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat fugit
-          ipsa quisquam. Magnam laboriosam voluptatem sequi expedita autem nemo
-          ipsam repellendus! Magni animi quae cupiditate illum aut voluptatum
-          libero similique!
+          Celebrating the NGO's latest certification, a testament to our commitment to excellence and positive impact in the community.
         </p>
       </div>
     </div>
-    <h1>Our mission</h1>
+    <!-- <h1>Our mission</h1>
     <div class="hed">
       <h4>
-        Lorem ipsum dolor sit Lorem ipsum dolor sit amet consectetur adipisicing
-        elit. Explicabo suscipit cumque, ratione rerum perspiciatis deleniti
-        tenetur, voluptates voluptatum consequatur atque corporis ad corrupti
-        neque officia, libero quaerat magnam qui doloribus? Doloremque vel atque
-        sed impedit quo laudantium corrupti vero! Iusto, laborum neque aut
-        repellat mollitia harum modi qui tempore deleniti error adipisci
-        perferendis officia itaque voluptates accusantium tenetur sit delectus.
-        Incidunt qui repudiandae beatae aut eaque quidem. Earum suscipit dicta
-        numquam rem doloremque dolore repellendus eum. Nam eaque sunt harum,
-        dicta illum aut neque amet, optio repudiandae obcaecati, consectetur
-        accusamus?amet consectetur adipisicing elit. Maxime distinctio nostrum
-        odit rem velit dolorum dolor exercitationem libero ut, vitae expedita,
-        dolorem ipsam, aperiam repellat aliquid aut voluptate debitis
-        dignissimos.
+        To empower NGOs by providing a transparent and user-friendly platform that connects them with donors, ensuring that every contribution reaches the right hands and creates maximum impact.We are committed to creating lasting change by addressing the root causes of poverty, inequality, and environmental degradation. Through collaboration, compassion, and action, we empower vulnerable populations with access to education, advocate for human rights, and promote environmental sustainability. Our mission is to ensure that every child has the opportunity to learn, all people have access to healthcare, and communities are resilient in the face of climate change.
       </h4>
-    </div>
+    </div> -->
     <!-- Video Section -->
     <h1>This Our Activites that We Take</h1>
     <div
@@ -409,6 +362,19 @@
         <p id="ede" style="text-align: center; scale: 1.3">CHRO</p>
       </div>
     </div>
+
+    <section class="goals-section">
+      <div class="container">
+          <h2>Future Goals</h2>
+          <ul class="goal-list">
+              <li><strong>Expand Reach:</strong> Partner with NGOs across diverse sectors and regions to make our platform accessible to more causes and communities.</li>
+              <li><strong>Enhance Transparency:</strong> Develop advanced tracking features to ensure donors can see the direct impact of their contributions.</li>
+              <li><strong>Increase Donor Engagement:</strong> Create programs and events to encourage recurring contributions and build a community of dedicated supporters.</li>
+              <li><strong>Technology Integration:</strong> Utilize AI and data analytics to match NGOs with potential donors based on interests and past donations, improving the efficiency of fundraising campaigns.</li>
+              <li><strong>Promote Awareness:</strong> Launch campaigns to raise awareness about lesser-known social causes and encourage contributions towards them.</li>
+          </ul>
+      </div>
+  </section>
     <div class="contain">
       <h5><a href="#">Back to top</a></h5>
     </div>
