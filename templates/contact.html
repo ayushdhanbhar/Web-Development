@@ -74,4 +74,12 @@
       <div class="yeu">
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d60485.15028134448!2d73.72731498214145!3d18.649545961848148!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2b9e76cf2f9bb%3A0x51c2a6d121bcc6c8!2sNigdi%2C%20Pimpri-Chinchwad%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1724398554893!5m2!1sen!2sin" width="1000" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
+      <script>
+        const menuIcon = document.querySelector('.menu-icon');
+        const navLinks = document.querySelector('.nav-links');
+      
+        menuIcon.addEventListener('click', () => {
+          navLinks.classList.toggle('active');
+        });
+      </script>
     </html>

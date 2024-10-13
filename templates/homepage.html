@@ -217,5 +217,13 @@ animation-iteration-count:infinte;
       <div class="copyright">© 2024-207, Satkarma.com, Inc. or its affiliates</div>
     </div>
   </footer>
+  <script>
+    const menuIcon = document.querySelector('.menu-icon');
+    const navLinks = document.querySelector('.nav-links');
+  
+    menuIcon.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+  </script>
 </body>
     </html>
