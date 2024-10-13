@@ -18,47 +18,48 @@
   </head>
   <section class="mission-vision-section">
     <div class="container">
-        <h1 class="title">Satkarma Foundation</h1>
-        
-        <div class="split-container">
-            <div class="vision">
-                <h2 class="animated-heading">Our Vision</h2>
-                <p class="animated-text">To build a compassionate world where every NGO's needs are met, and no social cause is left unsupported, creating a ripple effect of positive change.</p>
-            </div>
+      <div class="split-container">
+        <div class="vision">
+          <h2 class="animated-heading">Our Vision</h2>
+          <p class="animated-text">
+            To build a compassionate world where every NGO's needs are met, and
+            no social cause is left unsupported, creating a ripple effect of
+            positive change.
+          </p>
+        </div>
 
-            <div class="mission">
-                <h2 class="animated-heading">Our Mission</h2>
-                <p class="animated-text">To empower NGOs by providing a transparent and user-friendly platform that connects them with donors, ensuring that every contribution reaches the right hands and creates maximum impact.</p>
-            </div>
+        <div class="mission">
+          <h2 class="animated-heading">Our Mission</h2>
+          <p class="animated-text">
+            To empower NGOs by providing a transparent and user-friendly
+            platform that connects them with donors, ensuring that every
+            contribution reaches the right hands and creates maximum impact.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="about-us">
+    <div class="container">
+        <div class="about-image">
+          <img src="{{ url_for('static', filename='images/cep8.jpg') }}" alt="about_us">
+        </div>
+        <div class="about-content">
+            <h1>About Us</h1>
+            <p>
+                At <strong>Our NGO</strong>, we are committed to creating a brighter future. Through sustainable initiatives in [Key Focus Areas], we strive to make the world a better place.
+            </p>
+            <p>
+                Satkarma Foundation, founded in 2024, is committed to creating a just, inclusive, and sustainable world. We empower vulnerable populations through education, healthcare, environmental conservation, and human rights advocacy. Our mission is to foster long-term solutions that address poverty, inequality, and environmental degradation. Guided by ethical standards, transparency, and diversity, we strive to uplift communities and promote lasting change.
+            </p>
+            <a href="/sam" class="btn-learn-more">Learn More</a>
         </div>
     </div>
 </section>
-    <h1 id="one">ABOUT US</h1>
+
   <style>
-    .und {
-      background-image: url("{{ url_for('static', filename='images/j2.jpeg') }}");
-      background-repeat: no-repeat;
-      background-position: top bottom;
-      background-size: cover;
-      height: 600px;
-      position: sticky;
-    }
-
-    .und {
-      background-image: url("{{ url_for('static', filename='images/satkarma.png') }}");
-      background-size: cover; /* Ensures the image covers the section */
-      background-repeat: no-repeat; /* Prevents image repetition */
-      background-position: center; /* Centers the image */
-      height: 400px; /* Sets a fixed height */
-      width: 100%; /* Full width */
-      display: flex;
-      justify-content: center; /* Centers content horizontally */
-      align-items: center; /* Centers content vertically */
-      text-align: center; /* Ensures text is centered */
-    }
-
     .nav {
-      height: 500px;
+      height: 600px;
       background-image: url("{{ url_for('static', filename='images/j7.jpeg') }}");
       background-size: cover;
       background-repeat: no-repeat;
@@ -118,7 +119,7 @@
       background-repeat: no-repeat;
     }
 
-    .cex1{
+    .cex1 {
       height: 400px;
       width: 600px;
       background-image: url("{{ url_for('static', filename='images/cep5.jpg') }}");
@@ -126,7 +127,7 @@
       background-repeat: no-repeat;
       background-position: top bottom;
     }
-    .cvx1{
+    .cvx1 {
       height: 400px;
       width: 600px;
       background-image: url("{{ url_for('static', filename='images/cep2.jpg') }}");
@@ -134,7 +135,7 @@
       background-repeat: no-repeat;
       background-position: top bottom;
     }
-    .cex2{
+    .cex2 {
       height: 400px;
       width: 600px;
       background-image: url("{{ url_for('static', filename='images/cep4.jpg') }}");
@@ -142,7 +143,7 @@
       background-repeat: no-repeat;
       background-position: top bottom;
     }
-    .cvx2{
+    .cvx2 {
       height: 400px;
       width: 600px;
       background-image: url("{{ url_for('static', filename='images/cep6.jpg') }}");
@@ -157,101 +158,34 @@
     .contain {
       background-color: #989fa7;
     }
-
-    .nav-search {
-      position: relative;
-      display: flex;
-      justify-content: center;
-      width: 500px;
-    }
-
-    .search-input {
-      width: 450px;
-      padding: 5px;
-      font-size: 16px;
-    }
-
-    .suggestions {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      right: 0;
-      border: 1px solid #ffffff;
-      background-color: #000000;
-      z-index: 999;
-      display: none;
-      max-height: 150px;
-      overflow-y: auto;
-    }
-
-    .suggestions li {
-      padding: 10px;
-      cursor: pointer;
-    }
-
-    .suggestions li:hover {
-      background-color: #191616;
-    }
-
-    .search-icon {
-      margin-right: 20px;
-    }
   </style>
   <body>
-      <nav class="navbar">
-        <div class="cont">
-          <div class="logo">
-            <a href="#">SatKarma</a>
-          </div>
-          <ul class="nav-links">
-            <li><a href="/">Home</a></li>
-            <li><a href="/about">About Us</a></li>
-            <li><a href="/donate">Donate</a></li>
-            <li><a href="/NGOS">How We Work</a></li>
-            <li><a href="/contact">Contact Us</a></li>
-            <li>
-              {% if 'user_id' not in session %}
-                <a href="{{ url_for('login') }}">Sign In</a>
-              {% else %}
-                <a href="{{ url_for('logout') }}">Logout</a>
-              {% endif %}
-            </li>          </ul>
-          <div class="menu-icon">
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
+    <nav class="navbar">
+      <div class="cont">
+        <div class="logo">
+          <a href="#">SatKarma</a>
         </div>
-      </nav>
-    <section class="mission-vision-section">
-      <div class="container">
-          <h1 class="title">Satkarma Foundation</h1>
-          <div class="split-container">
-              <!-- Vision Section -->
-              <div class="vision">
-                  <h2 class="animated-heading">Our Vision</h2>
-                  <p class="animated-text">To build a compassionate world where every NGO's needs are met, and no social cause is left unsupported, creating a ripple effect of positive change.</p>
-              </div>
-
-              <!-- Mission Section -->
-              <div class="mission">
-                  <h2 class="animated-heading">Our Mission</h2>
-                  <p class="animated-text">To empower NGOs by providing a transparent and user-friendly platform that connects them with donors, ensuring that every contribution reaches the right hands and creates maximum impact.</p>
-              </div>
-          </div>
+        <ul class="nav-links">
+          <li><a href="/">Home</a></li>
+          <li><a href="/about">About Us</a></li>
+          <li><a href="/donate">Donate</a></li>
+          <li><a href="/NGOS">NGO</a></li>   
+          <li><a href="/contact">Contact Us</a></li>
+          <li>
+            {% if 'user_id' not in session %}
+            <a href="{{ url_for('login') }}">Sign In</a>
+            {% else %}
+            <a href="{{ url_for('logout') }}">Logout</a>
+            {% endif %}
+          </li>
+        </ul>
+        <div class="menu-icon">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
       </div>
-  </section>
-
-  <!-- About Section -->
-  <section class="about-section">
-      <div class="container">
-          <h1 class="about-title">About Satkarma Foundation</h1>
-          <div class="about-content">
-              <p class="animated-text">We are committed to creating lasting change by addressing the root causes of poverty, inequality, and environmental degradation. Through collaboration, compassion, and action, we empower vulnerable populations with access to education, advocate for human rights, and promote environmental sustainability. Our mission is to ensure that every child has the opportunity to learn, all people have access to healthcare, and communities are resilient in the face of climate change.</p>
-          </div>
-      </div>
-  </section>
-
+    </nav>
     <!-- Events Section -->
     <h1 id="two" style="text-align: center">Our Team</h1>
     <div class="nav"></div>
@@ -259,33 +193,31 @@
     <div class="part">
       <div class="cex1">
         <p id="teo">
-          The NGO team shares vital information with the community, empowering individuals through knowledge and support.
+          The NGO team shares vital information with the community, empowering
+          individuals through knowledge and support.
         </p>
       </div>
       <div class="cvx1">
         <p id="teo">
-          Connecting with dedicated NGO leaders to support community-driven initiatives and sustainable development.
+          Connecting with dedicated NGO leaders to support community-driven
+          initiatives and sustainable development.
         </p>
       </div>
     </div>
     <div class="part">
       <div class="cex2">
         <p id="teo">
-          Engaging with residents of the NGO, listening to their stories, and understanding the impact of our collective efforts.
+          Engaging with residents of the NGO, listening to their stories, and
+          understanding the impact of our collective efforts.
         </p>
       </div>
       <div class="cvx2">
         <p id="teo">
-          Celebrating the NGO's latest certification, a testament to our commitment to excellence and positive impact in the community.
+          Celebrating the NGO's latest certification, a testament to our
+          commitment to excellence and positive impact in the community.
         </p>
       </div>
     </div>
-    <!-- <h1>Our mission</h1>
-    <div class="hed">
-      <h4>
-        To empower NGOs by providing a transparent and user-friendly platform that connects them with donors, ensuring that every contribution reaches the right hands and creates maximum impact.We are committed to creating lasting change by addressing the root causes of poverty, inequality, and environmental degradation. Through collaboration, compassion, and action, we empower vulnerable populations with access to education, advocate for human rights, and promote environmental sustainability. Our mission is to ensure that every child has the opportunity to learn, all people have access to healthcare, and communities are resilient in the face of climate change.
-      </h4>
-    </div> -->
     <!-- Video Section -->
     <h1>This Our Activites that We Take</h1>
     <div
@@ -362,19 +294,7 @@
         <p id="ede" style="text-align: center; scale: 1.3">CHRO</p>
       </div>
     </div>
-
-    <section class="goals-section">
-      <div class="container">
-          <h2>Future Goals</h2>
-          <ul class="goal-list">
-              <li><strong>Expand Reach:</strong> Partner with NGOs across diverse sectors and regions to make our platform accessible to more causes and communities.</li>
-              <li><strong>Enhance Transparency:</strong> Develop advanced tracking features to ensure donors can see the direct impact of their contributions.</li>
-              <li><strong>Increase Donor Engagement:</strong> Create programs and events to encourage recurring contributions and build a community of dedicated supporters.</li>
-              <li><strong>Technology Integration:</strong> Utilize AI and data analytics to match NGOs with potential donors based on interests and past donations, improving the efficiency of fundraising campaigns.</li>
-              <li><strong>Promote Awareness:</strong> Launch campaigns to raise awareness about lesser-known social causes and encourage contributions towards them.</li>
-          </ul>
-      </div>
-  </section>
+   <!-- footer -->
     <div class="contain">
       <h5><a href="#">Back to top</a></h5>
     </div>

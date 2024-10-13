@@ -85,63 +85,6 @@
     display: flex;
   }
 }
-
-/* Rest of the CSS content */
-.nav-search {
-  display: flex;
-  height: 40px;
-  width: 500px;
-  border-radius: 4px;
-}
-.search-select {
-  background-color: #e6e6e6;
-  color: #0f1111;
-  font-size: 14px;
-  border-top-left-radius: 4px;
-  border-bottom-left-radius: 4px;
-  border: none;
-}
-.search-input {
-  width: 100%;
-  border: none;
-  font-size: 1rem;
-}
-.search-icon {
-  width: 50px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.2rem;
-  background-color: rgb(218, 148, 17);
-  border-top-right-radius: 4px;
-  border-bottom-right-radius: 4px;
-}
-.nav-second {
-  font-size: 14px;
-  font: weight 700px;
-}
-span {
-  font-size: 12px;
-}
-.third {
-  font-size: 16px;
-  font-weight: 700px;
-}
-.border {
-  border: 2px solid transparent;
-  border-radius: 0;
-}
-.border:hover {
-  border: 2px solid white;
-  border-radius: 4px;
-}
-
-.nav-search:hover {
-  border: 2px solid orange;
-}
-.nav-cart i {
-  font-size: 40px;
-}
 .logo {
   margin-right: 50px;
   height: 30px;
@@ -165,11 +108,6 @@ span {
 h2 {
   margin-left: 30px;
   margin-right: 30px;
-}
-#one {
-  margin-top: 330px;
-  margin-right: 1200px;
-  font-weight: 900;
 }
 .nav {
   height: 500px;
@@ -657,5 +595,171 @@ body {
 
   .animated-text {
       font-size: 1.1em;
+  }
+}
+/*abouts us*/
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 50px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* About Us Section */
+.about-us {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 50px 0;
+  background-color: #ffffff;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  overflow: hidden;
+  position: relative;
+  animation: slideInUp 1.5s ease;
+}
+
+.about-image {
+  flex: 1;
+  text-align: center;
+  animation: zoomIn 1.2s ease-in-out;
+}
+
+.about-image img {
+  background-image: url("cep8.jpg");
+  width: 100%;
+  max-width: 500px;
+  border-radius: 10px;
+  transition: transform 0.4s ease;
+}
+
+.about-image img:hover {
+  transform: scale(1.05); /* Slight zoom on hover */
+}
+
+.about-content {
+  flex: 1;
+  padding-left: 30px;
+  color: #444;
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+.about-content h1 {
+  font-size: 48px;
+  color: #009688; /* Teal for a fresh, vibrant heading */
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.about-content p {
+  font-size: 18px;
+  margin-bottom: 20px;
+  line-height: 1.7;
+  color: #666;
+}
+
+.about-content strong {
+  color: #ff6f61; /* Bright coral for highlighting important text */
+}
+
+.btn-learn-more {
+  display: inline-block;
+  padding: 12px 30px;
+  background-color: #009688;
+  color: #fff;
+  font-size: 16px;
+  text-transform: uppercase;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: background-color 0.4s ease, transform 0.3s ease;
+  animation: fadeInUp 2s ease-in-out;
+}
+
+.btn-learn-more:hover {
+  background-color: #00796b;
+  transform: scale(1.1); /* Button grows slightly on hover */
+}
+
+/* Background animations */
+.about-us::before {
+  content: '';
+  position: absolute;
+  width: 150%;
+  height: 150%;
+  top: -50%;
+  left: -50%;
+  background: radial-gradient(circle, rgba(255,111,97,0.1) 0%, rgba(255,111,97,0) 60%);
+  animation: rotate 10s infinite linear;
+  z-index: -1;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  0% {
+      opacity: 0;
+  }
+  100% {
+      opacity: 1;
+  }
+}
+
+@keyframes slideInUp {
+  0% {
+      transform: translateY(50px);
+      opacity: 0;
+  }
+  100% {
+      transform: translateY(0);
+      opacity: 1;
+  }
+}
+
+@keyframes zoomIn {
+  0% {
+      transform: scale(0.8);
+      opacity: 0;
+  }
+  100% {
+      transform: scale(1);
+      opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+      opacity: 0;
+      transform: translateY(20px);
+  }
+  100% {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+@keyframes rotate {
+  0% {
+      transform: rotate(0deg);
+  }
+  100% {
+      transform: rotate(360deg);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+      flex-direction: column;
+      text-align: center;
+  }
+
+  .about-content {
+      padding-left: 0;
+      margin-top: 30px;
+  }
+
+  .about-image{
+      max-width: 100%;
   }
 }
