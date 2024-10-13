@@ -85,13 +85,6 @@
     display: flex;
   }
 }
-.logo {
-  margin-right: 50px;
-  height: 30px;
-  width: 100px;
-  background-image: url("box12.jpg");
-  background-repeat: no-repeat;
-}
 .nav-links {
   margin-bottom: 10px;
 }
@@ -805,5 +798,63 @@ body {
     text-decoration: none;
     font-size: 18px;
     padding: 10px;
+  }
+}
+/*media query*/
+/* For screens smaller than 768px (tablets and smaller devices) */
+@media (max-width: 768px) {
+  .eoxmain, .eoxmain2 {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .eox1, .eox2, .eox3, .oox4, .oox5, .eox6 {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  video {
+    width: 100%;
+    height: auto;
+  }
+
+  footer ul {
+    text-align: center;
+    padding: 0;
+    margin: 20px 0;
+  }
+
+  .ayush4 {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .pages a {
+    display: block;
+    margin: 10px 0;
+  }
+}
+
+/* For screens smaller than 480px (mobile devices) */
+@media (max-width: 480px) {
+  h1, p {
+    font-size: 18px;
+  }
+
+  .eox1, .eox2, .eox3, .oox4, .oox5, .eox6 {
+    scale: 1;
+    margin-bottom: 10px;
+  }
+
+  footer ul p {
+    font-size: 18px;
+  }
+
+  footer ul a {
+    font-size: 16px;
+  }
+
+  .copyright {
+    font-size: 14px;
   }
 }
