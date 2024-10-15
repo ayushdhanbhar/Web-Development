@@ -27,33 +27,34 @@ animation-iteration-count:infinte;
 
 
 .wox3{
-  height:400px;
+  height:700px;
   width:50%;
-  background-image: url("{{ url_for('static', filename='images/h1.jpg') }}");
+  background-image: url("{{ url_for('static', filename='images/wep2.jpg') }}");
   background-size: cover;
   background-repeat:no-repeat;
 }
 .wox4{
-    height:400px;
+    height:700px;
     width:50%;
-    background-image: url("{{ url_for('static', filename='images/h2.jpg') }}");
+    background-image: url("{{ url_for('static', filename='images/wep3.png') }}");
     background-size: cover;
     background-repeat:no-repeat;
   }
   .wox5{
-  height:400px;
-  width:50%;
-  background-image: url("{{ url_for('static', filename='images/h3.jpg') }}");
+  height:700px;
+  width:100%;
+  background-image: url("{{ url_for('static', filename='images/wep5.jpg') }}");
   background-size: cover;
   background-repeat:no-repeat;
+  background-position:top-bottom;
 }
-.wox6{
-    height:400px;
+/* .wox6{
+    height:700px;
     width:50%;
-    background-image: url("{{ url_for('static', filename='images/cep1.jpg') }}");
+    background-image: url("{{ url_for('static', filename='images/hush_2.jpg') }}");
     background-size: cover;
     background-repeat:no-repeat;
-  }
+  } */
   .woxsub1{
       display: flex;
       justify-content: space-evenly;
@@ -67,11 +68,19 @@ animation-iteration-count:infinte;
       gap:4px;
    }
   .mu{
-      height: 500px;
+      height:650px;
+      background-image: url("{{ url_for('static', filename='images/.wep6.jpg') }}");
+      background-size: cover;
+    background-repeat:no-repeat;
+    background-position:top-Bottom;
+  } 
+  .ayu{
+    height:650px;
       background-image: url("{{ url_for('static', filename='images/j7.jpeg') }}");
       background-size: cover;
     background-repeat:no-repeat;
-  } 
+    background-position:top-Bottom;
+  }
 </style>
 
 <body>
@@ -85,7 +94,7 @@ animation-iteration-count:infinte;
         <ul class="nav-links">
           <li><a href="/">Home</a></li>
           <li><a href="/about">About Us</a></li>
-          <li><a href="/donate">Donate</a></li>
+          <li><a href="/transaction">Donate</a></li>
           <li><a href="/NGOS">NGO</a></li>
           <li><a href="/contact">Contact Us</a></li>
           <li>
@@ -103,8 +112,13 @@ animation-iteration-count:infinte;
         </div>
       </div>
     </nav>
-  </div>
 
+  </div>
+  <div class="container">
+    <div class="animated-text">
+      <h1 >Do Good Get Good</h1>
+    </div>
+  </div>
   <div class="mu"></div>
 
   <div class="woxsub1">
@@ -124,6 +138,8 @@ animation-iteration-count:infinte;
       <div class="wox-contain"></div>
     </div>
   </div>
+  <div class="woxsub3"></div>
+  <div class="ayu"></div>
     <div class="fex">
       <div class="ew">
         <h1 id="wq">Get Involved</h1>
