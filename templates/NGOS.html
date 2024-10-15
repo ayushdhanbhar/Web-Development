@@ -8,6 +8,14 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='homepage.css') }}">
 
     <style>
+        .logo{
+    height:90px;
+    background-image: url("{{ url_for('static', filename='images/pccoe.jpeg') }}");
+    background-size: cover;
+    background-repeat:no-repeat;
+    background-position:top-Bottom;
+    border-radius:20px;
+  } 
         .ngo-container {
             max-width: 1200px;
             margin: 150px auto 50px;
@@ -82,45 +90,6 @@
             animation-duration: 7s;
             animation-timing-function: linear;
             animation-iteration-count: infinte;
-        }
-
-        .nav-search {
-            position: relative;
-            display: flex;
-            justify-content: center;
-            width: 500px;
-        }
-
-        .search-input {
-            width: 450px;
-            padding: 5px;
-            font-size: 16px;
-        }
-
-        .suggestions {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            right: 0;
-            border: 1px solid #ffffff;
-            background-color: #000000;
-            z-index: 999;
-            display: none;
-            max-height: 150px;
-            overflow-y: auto;
-        }
-
-        .suggestions li {
-            padding: 10px;
-            cursor: pointer;
-        }
-
-        .suggestions li:hover {
-            background-color: #191616;
-        }
-
-        .search-icon {
-            margin-right: 20px;
         }
     </style>
 </head>

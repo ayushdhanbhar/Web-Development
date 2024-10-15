@@ -14,7 +14,7 @@ background-size:cover;
 position: sticky;
 background-repeat:no-repeat;
 background-position:top bottom;
-height:600px;
+height:400px;
 display: flex;
 flex-direction:column;
 align-items: center;
@@ -74,6 +74,14 @@ animation-iteration-count:infinte;
     background-repeat:no-repeat;
     background-position:top-Bottom;
   } 
+  .logo{
+    height:90px;
+    background-image: url("{{ url_for('static', filename='images/pccoe.jpeg') }}");
+    background-size: cover;
+    background-repeat:no-repeat;
+    background-position:top-Bottom;
+    border-radius:20px;
+  } 
   .ayu{
     height:650px;
       background-image: url("{{ url_for('static', filename='images/j7.jpeg') }}");
@@ -88,7 +96,7 @@ animation-iteration-count:infinte;
     <nav class="navbar">
       <div class="cont">
         <div class="logo">
-          <a href="#">SatKarma</a>
+          <a href="">satkarm</a>
         </div>
       
         <ul class="nav-links">
@@ -116,11 +124,37 @@ animation-iteration-count:infinte;
   </div>
   <div class="container">
     <div class="animated-text">
-      <h1 >Do Good Get Good</h1>
+      <h1 >Welcome to Satkarma Foundation</h1>
     </div>
   </div>
-  <div class="mu"></div>
+  <section class="welcome">
+    <!-- <h1 id="er">Welcome to Satkarma Foundation</h1> -->
+    <p>We are committed to creating a just, inclusive, and sustainable world. Our mission is to empower vulnerable populations, provide access to education and healthcare, and protect the environment.</p>
+    <a href="#" class="learn-more-btn">Learn More</a>
+</section>
 
+<!-- Programs Section -->
+<section class="programs">
+    <h2>Our Key Programs</h2>
+    <div class="program-list">
+        <div class="program">
+            <h3>Education for All</h3>
+            <p>Providing quality education to underprivileged children and youth.</p>
+        </div>
+        <div class="program">
+            <h3>Healthcare Access</h3>
+            <p>Offering essential healthcare services to remote communities.</p>
+        </div>
+        <div class="program">
+            <h3>Environmental Conservation</h3>
+            <p>Promoting sustainability and protecting natural resources.</p>
+        </div>
+        <div class="program">
+            <h3>Human Rights Advocacy</h3>
+            <p>Supporting marginalized groups and fighting for equality.</p>
+        </div>
+    </div>
+</section>
   <div class="woxsub1">
     <div class="wox3">
       <div class="wox-contain"></div>
@@ -140,7 +174,6 @@ animation-iteration-count:infinte;
   </div>
   <div class="woxsub3"></div>
   <div class="ayu"></div>
-    <div class="fex">
       <div class="ew">
         <h1 id="wq">Get Involved</h1>
         <p id="ewq">
@@ -171,7 +204,6 @@ animation-iteration-count:infinte;
           </p>
         </div>
       </div>
-    </div>
   
     </div>
   <main></main>
@@ -233,13 +265,5 @@ animation-iteration-count:infinte;
       <div class="copyright">© 2024-207, Satkarma.com, Inc. or its affiliates</div>
     </div>
   </footer>
-  <script>
-    const menuIcon = document.querySelector('.menu-icon');
-    const navLinks = document.querySelector('.nav-links');
-  
-    menuIcon.addEventListener('click', () => {
-      navLinks.classList.toggle('active');
-    });
-  </script>
 </body>
     </html>
