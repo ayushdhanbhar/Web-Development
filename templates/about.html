@@ -72,15 +72,15 @@
     .eox1 {
       height: 220px;
       width: 220px;
-      border-radius: 50%;
-      background-image: url("{{ url_for('static', filename='images/cep1.jpg') }}");
+      border-radius:50%;
+      background-image: url("{{ url_for('static', filename='images/girl.png') }}");
       background-size: cover;
       background-repeat: no-repeat;
     }
     .eox2 {
       height: 220px;
       width: 220px;
-      border-radius: 50%;
+      border-radius:50%;
       background-image: url("{{ url_for('static', filename='images/ayush.jpg') }}");
       background-size: cover;
       background-repeat: no-repeat;
@@ -88,7 +88,7 @@
     .eox3 {
       height: 220px;
       width: 220px;
-      border-radius: 50%;
+      border-radius:50%;
       background-image: url("{{ url_for('static', filename='images/solo.jpg') }}");
       background-size: cover;
       background-repeat: no-repeat;
@@ -97,7 +97,7 @@
     .oox4 {
       height: 220px;
       width: 220px;
-      border-radius: 50%;
+      border-radius:50%;
       background-image: url("{{ url_for('static', filename='images/om2.jpg') }}");
       background-size: cover;
       background-repeat: no-repeat;
@@ -105,7 +105,7 @@
     .oox5 {
       height: 220px;
       width: 220px;
-      border-radius: 50%;
+      border-radius:50%;
       background-image: url("{{ url_for('static', filename='images/harsh.jpg') }}");
       background-size: cover;
       background-repeat: no-repeat;
@@ -113,7 +113,7 @@
     .eox6 {
       height: 220px;
       width: 220px;
-      border-radius: 50%;
+      border-radius:50%;
       background-image: url("{{ url_for('static', filename='images/prashik.jpg') }}");
       background-size: cover;
       background-repeat: no-repeat;
@@ -166,6 +166,19 @@
     background-position:top-Bottom;
     border-radius:20px;
   } 
+  .zoom-text {
+            font-size:30px;
+            color: #333;
+            animation: zoomIn 3s ease-in-out infinite alternate;
+            text-align: center;
+            /* margin-top: 40vh; */
+            margin-bottom: 35px;
+        }
+
+        @keyframes zoomIn {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.5); }
+        }
   </style>
   <body>
     <nav class="navbar">
@@ -195,9 +208,9 @@
       </div>
     </nav>
     <!-- Events Section -->
-    <h1 id="two" style="text-align: center">Our Team</h1>
+    <h1 class="zoom-text">Team</h1>
     <div class="nav"></div>
-    <h1 id="two" style="text-align: center">Our Work</h1>
+    <h1 class="zoom-text">Our Work</h1>
     <div class="part">
       <div class="cex1">
         <p id="teo">
@@ -227,15 +240,14 @@
       </div>
     </div>
     <!-- Video Section -->
-    <h1>This Our Activites that We Take</h1>
     <div
       style="
         display: flex;
         justify-content: center;
         align-items: center;
         height: 100vh;
-        margin-bottom: 40px;
-        margin-top: 40px;
+        margin-bottom:50px;
+        margin-top: 70px;
       "
     >
       <video
@@ -266,22 +278,21 @@
         box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
       "
     >
-      These are our Officers
     </p>
-
+    <h1 class="zoom-text">These are Our Officers</h1>
     <!-- CEO, COO, CTO -->
     <div
       class="eoxmain"
       style="display: flex; justify-content: space-around; margin-bottom: 40px"
     >
       <div class="eox1">
-        <p id="ede" style="text-align: center; scale: 1.3">CEO</p>
+        <p id="ede" style="text-align: center; scale: 1.3">CEO <br> Email:aayushdhanbhar@gmail.com <br>contact no:7757842975</p>
       </div>
       <div class="eox2">
-        <p id="ede" style="text-align: center; scale: 1.3">COO</p>
+        <p id="ede" style="text-align: center; scale: 1.3">COO<br> Email:aayushdhanbhar@gmail.com <br>contact no:7757842975</p>
       </div>
       <div class="eox3">
-        <p id="ede" style="text-align: center; scale: 1.3">CTO</p>
+        <p id="ede" style="text-align: center; scale: 1.3">CTO<br> Email:aayushdhanbhar@gmail.com <br>contact no:7757842975</p>
       </div>
     </div>
 
@@ -293,13 +304,13 @@
       style="display: flex; justify-content: space-around; margin-bottom: 40px"
     >
       <div class="oox4">
-        <p id="ede" style="text-align: center; scale: 1.3">CFO</p>
+        <p id="ede" style="text-align: center; scale: 1.3">CFO<br> Email:aayushdhanbhar@gmail.com <br>contact no:7757842975</p>
       </div>
       <div class="oox5">
-        <p id="ede" style="text-align: center; scale: 1.3">CMO</p>
+        <p id="ede" style="text-align: center; scale: 1.3">CMO<br> Email:aayushdhanbhar@gmail.com <br>contact no:7757842975</p>
       </div>
       <div class="eox6">
-        <p id="ede" style="text-align: center; scale: 1.3">CHRO</p>
+        <p id="ede" style="text-align: center; scale: 1.3">CHRO<br> Email:aayushdhanbhar@gmail.com <br>contact no:7757842975</p>
       </div>
     </div>
    <!-- footer -->
@@ -318,7 +329,7 @@
           <a href="#">Volunteer and Community Engagement</a>
           <a href="#">Challenges and Opportunities</a>
         </ul>
-
+  
         <ul>
           <p>Make Money with Us</p>
           <a href="#">Donations</a>
@@ -329,7 +340,7 @@
           <a href="#">Self-Publish With Us</a>
           <a href="#">See More Make Money With Us</a>
         </ul>
-
+  
         <ul>
           <p>NGO Payment Product</p>
           <a href="#">Online Donation Platforms</a>
@@ -337,7 +348,7 @@
           <a href="#">Mobile Payment Solutions</a>
           <a href="#">Event Ticketing and Registration</a>
         </ul>
-
+  
         <ul>
           <p>Let Us Help You</p>
           <a href="#">Community Support and Empowerment</a>
@@ -349,7 +360,7 @@
           <a href="#">Help</a>
         </ul>
       </div>
-
+  
       <div class="ayush4">
         <div class="pages">
           <a href="#">Condition of Use</a>
@@ -357,18 +368,8 @@
           <a href="#">Consumer Health Data Privacy Disclosure</a>
           <a href="#">Your Ads Privacy Choices</a>
         </div>
-        <div class="copyright">
-          © 2024-207, Satkarma.com, Inc. or its affiliates
-        </div>
+        <div class="copyright">© 2024-207, Satkarma.com, Inc. or its affiliates</div>
       </div>
     </footer>
-    <script>
-      const menuIcon = document.querySelector('.menu-icon');
-      const navLinks = document.querySelector('.nav-links');
-    
-      menuIcon.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
-      });
-    </script>
   </body>
 </html>

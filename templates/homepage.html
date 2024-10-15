@@ -14,7 +14,7 @@ background-size:cover;
 position: sticky;
 background-repeat:no-repeat;
 background-position:top bottom;
-height:400px;
+height:500px;
 display: flex;
 flex-direction:column;
 align-items: center;
@@ -89,6 +89,79 @@ animation-iteration-count:infinte;
     background-repeat:no-repeat;
     background-position:top-Bottom;
   }
+  .impact-section {
+            text-align: center;
+            padding: 60px;
+            background-color: #e3f2fd;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .impact-title {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            color: #0277bd;
+            font-family: 'Arial', sans-serif;
+            animation: slideIn 1s ease-out;
+        }
+
+        .impact-description {
+            font-size: 1.3rem;
+            color: #555;
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0;
+            animation: fadeInUp 1.5s 0.5s forwards;
+        }
+
+        .impact-counters {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            animation: scaleIn 1s ease-out 0.5s forwards;
+        }
+
+        .counter {
+            font-size: 4rem;
+            color: #ff5722;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .counter:hover {
+            color: #d32f2f;
+        }
+
+        .counter-label {
+            margin-top: 10px;
+            font-size: 1.2rem;
+            color: #0288d1;
+            font-family: 'Arial', sans-serif;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes scaleIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
 </style>
 
 <body>
@@ -96,7 +169,7 @@ animation-iteration-count:infinte;
     <nav class="navbar">
       <div class="cont">
         <div class="logo">
-          <a href="">satkarm</a>
+          <a href="">satkarma</a>
         </div>
       
         <ul class="nav-links">
@@ -130,11 +203,20 @@ animation-iteration-count:infinte;
   <section class="welcome">
     <!-- <h1 id="er">Welcome to Satkarma Foundation</h1> -->
     <p>We are committed to creating a just, inclusive, and sustainable world. Our mission is to empower vulnerable populations, provide access to education and healthcare, and protect the environment.</p>
-    <a href="#" class="learn-more-btn">Learn More</a>
+    <a href="/yup" class="learn-more-btn">Learn More</a>
 </section>
 
 <!-- Programs Section -->
-<section class="programs">
+  <div class="woxsub1">
+    <div class="wox3">
+      <div class="wox-contain"></div>
+    </div>
+    <div class="wox4">
+      <div class="wox-contain"></div>
+    </div>
+  </div>
+  </div>
+  <section class="programs">
     <h2>Our Key Programs</h2>
     <div class="program-list">
         <div class="program">
@@ -155,15 +237,6 @@ animation-iteration-count:infinte;
         </div>
     </div>
 </section>
-  <div class="woxsub1">
-    <div class="wox3">
-      <div class="wox-contain"></div>
-    </div>
-    <div class="wox4">
-      <div class="wox-contain"></div>
-    </div>
-  </div>
-  </div>
   <div class="woxsub2">
     <div class="wox5">
       <div class="wox-contain"></div>
@@ -172,6 +245,26 @@ animation-iteration-count:infinte;
       <div class="wox-contain"></div>
     </div>
   </div>
+  <section class="impact-section">
+    <h2 class="impact-title">Our Impact So Far</h2>
+    <p class="impact-description">
+        At Satkarma Foundation, we strive to create meaningful change in the world. Through our efforts in education, environmental conservation, and community support, we have positively impacted thousands of lives. Below are some of the key figures that reflect the difference we've made together.
+    </p>
+    <div class="impact-counters">
+        <div>
+            <div class="counter" id="counter1">0</div>
+            <div class="counter-label">People Educated</div>
+        </div>
+        <div>
+            <div class="counter" id="counter2">0</div>
+            <div class="counter-label">Trees Planted</div>
+        </div>
+        <div>
+            <div class="counter" id="counter3">0</div>
+            <div class="counter-label">Lives Impacted</div>
+        </div>
+    </div>
+</section>
   <div class="woxsub3"></div>
   <div class="ayu"></div>
       <div class="ew">
@@ -265,5 +358,29 @@ animation-iteration-count:infinte;
       <div class="copyright">© 2024-207, Satkarma.com, Inc. or its affiliates</div>
     </div>
   </footer>
+  <script>
+    function animateCounter(id, start, end, duration) {
+        const obj = document.getElementById(id);
+        let startTime = null;
+
+        const step = (timestamp) => {
+            if (!startTime) startTime = timestamp;
+            const progress = Math.min((timestamp - startTime) / duration, 1);
+            obj.innerText = Math.floor(progress * (end - start) + start);
+            if (progress < 1) {
+                window.requestAnimationFrame(step);
+            }
+        };
+
+        window.requestAnimationFrame(step);
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        animateCounter("counter1", 0, 1000, 1500); // Example: 5000 people educated
+        animateCounter("counter2", 0, 1000, 1500); // Example: 2000 trees planted
+        animateCounter("counter3", 0, 2000, 1500); // Example: 10000 lives impacted
+    });
+</script>
+
 </body>
     </html>

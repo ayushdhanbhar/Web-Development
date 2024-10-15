@@ -96,6 +96,7 @@
   display: flex;
   justify-content: center;
   text-align: center;
+  margin-top:80px;
 }
 
 h2 {
@@ -127,7 +128,7 @@ h2 {
   height: 220px;
   width: 220px;
   border-radius: 50%;
-  background-image: url("Screenshot 2024-09-07 225000.png");
+  background-image: url("girl.png");
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -150,13 +151,14 @@ h2 {
 .eoxmain2 {
   display: flex;
   justify-content: space-evenly;
+  margin-top:30px;
   margin-bottom: 20px;
   gap: 10px;
 }
 .oox4 {
   height: 220px;
   width: 220px;
-  border-radius: 50%;
+  border-radius:20px;
   background-image: url("om2.jpg");
   background-size: cover;
   background-repeat: no-repeat;
@@ -178,7 +180,7 @@ h2 {
   background-repeat: no-repeat;
 }
 #ede {
-  margin-top: 220px;
+  margin-top: 232px;
   display: flex;
   justify-content: center;
 }
@@ -235,10 +237,11 @@ h2 {
   margin-top: 10px;
   margin-bottom: 60px;
 }
+/**/
 .ayush2 {
-  background-color: #0a7f85;
+  background-color: #53afb9;
   color: white;
-  height: 430px;
+  height: 350px;
   display: flex;
   justify-content: space-evenly;
 }
@@ -256,7 +259,7 @@ ul a {
   color: #dddddd;
 }
 .ayush3 {
-  background-color: #137d67;
+  background-color: #222f3d;
   color: white;
   border-top: 0.5px solid white;
   height: 70px;
@@ -266,9 +269,9 @@ ul a {
 }
 
 .ayush4 {
-  background-color: #4d5660;
+  background-color: #56697c;
   color: white;
-  height: 75px;
+  height: 55px;
   font-size: 14px;
   text-align: center;
 }
@@ -857,4 +860,9 @@ body {
   .copyright {
     font-size: 14px;
   }
+}
+#teo{
+  font-size:18px;
+  color: #0f1111;
+  font-family:'Times New Roman', Times, serif;
 }

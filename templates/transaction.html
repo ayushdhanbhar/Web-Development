@@ -74,30 +74,17 @@
 </head>
 <body>
     <!-- Navigation bar -->
-    <div class="cont">
-        <div class="logo">
-            <a href="#">SatKarma</a>
-        </div>
         <nav class="navbar">
             <div class="cont">
                 <div class="logo">
                     <a href="#">SatKarma</a>
                 </div>
-                <div class="nav-search">
-                    <input type="text" placeholder="Search NGO" class="search-input" id="searchInput"
-                        oninput="showSuggestions()" />
-                    <ul class="suggestions" id="suggestionsList"></ul>
-                    <div class="search-icon">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                    </div>
-                </div>
-
 
                 <ul class="nav-links">
                     <li><a href="/">Home</a></li>
                     <li><a href="/about">About Us</a></li>
-                    <li><a href="/donate">Donate</a></li>
-                    <li><a href="/NGOS">How We Work</a></li>
+                    <li><a href="/transaction">Donate</a></li>
+                    <li><a href="/NGOS">NGO</a></li>
                     <li><a href="/contact">Contact Us</a></li>
                     <li>
                         {% if 'user_id' not in session %}

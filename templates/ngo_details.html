@@ -122,10 +122,6 @@
 </head>
 <body>
     <!-- Navigation bar -->
-    <div class="cont">
-        <div class="logo">
-            <a href="#">SatKarma</a>
-        </div>
         <nav class="navbar">
             <div class="cont">
                 <div class="logo">
@@ -166,8 +162,8 @@
                     {% endfor %}
                 </div>
                 <div class="action-buttons">
-                    <a href="{{ url_for('donate') }}" class="action-button donate-button">Donate Now</a>
-                    <a href="#contact" class="action-button contact-button">Contact NGO</a>
+                    <a href="{{ url_for('transaction') }}" class="action-button donate-button">Donate Now</a>
+                    <a href="/contact" class="action-button contact-button">Contact NGO</a>
                 </div>
             </div>
         </div>

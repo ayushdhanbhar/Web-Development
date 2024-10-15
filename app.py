@@ -31,7 +31,7 @@ def send_email(user_email, user_name):
     message_content = f"""
     Hello {user_name},
     
-    Thank you for signing up for Satkarma NGO!
+    Thank you for signing up for Satkarma Team !
     
     We are thrilled to have you as part of our community. By joining us, you are making a positive impact in the world. Together, we can work towards making a difference in the lives of many. We appreciate your support and look forward to your active participation.
     
@@ -317,6 +317,9 @@ def verify_payment():
 def ngo1():
     return render_template('ngo1.html')
 
+@app.route('/yup')
+def yup():
+    return render_template('yup.html')
 
 if __name__ == '__main__':
     setup_sample_ngos()
