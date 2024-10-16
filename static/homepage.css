@@ -180,6 +180,7 @@ h1 {
   top: 0;
   left: 0;
   z-index: 1000;
+  height:90px;
   /* display: flex;
           justify-content: space-evenly; */
 }
@@ -193,10 +194,11 @@ h1 {
 }
 
 .navbar .logo a {
-  color: white;
+  color: rgb(255, 255, 255);
   text-decoration: none;
   font-size: 1.5em;
   font-weight: bold;
+
 }
 
 .navbar .nav-links {

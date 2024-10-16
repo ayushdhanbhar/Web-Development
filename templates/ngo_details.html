@@ -123,33 +123,31 @@
 <body>
     <!-- Navigation bar -->
         <nav class="navbar">
-            <div class="cont">
-                <div class="logo">
-                    <a href="#">SatKarma</a>
-                </div>
-                <ul class="nav-links">
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/about">About Us</a></li>
-                    <li><a href="/transaction">Donate</a></li>
-                    <li><a href="/NGOS">NGO</a></li>
-                    <li><a href="/contact">Contact Us</a></li>
-                    <li>
-                        {% if 'user_id' not in session %}
-                        <a href="{{ url_for('login') }}">Sign In</a>
-                        {% else %}
-                        <a href="{{ url_for('logout') }}">Logout</a>
-                        {% endif %}
-                    </li>
-                </ul>
-                <div class="menu-icon">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
+          <div class="cont">
+            <div class="logo">
+              <a href="">..सत्कर्म..</a>
             </div>
-        </nav>
-    </div>
-
+          
+            <ul class="nav-links">
+              <li><a href="/">Home</a></li>
+              <li><a href="/about">About Us</a></li>
+              <li><a href="/transaction">Donate</a></li>
+              <li><a href="/NGOS">NGO</a></li>
+              <li><a href="/contact">Contact Us</a></li>
+              <li>
+                  {% if 'user_id' not in session %}
+                    <a href="{{ url_for('login') }}">Sign In</a>
+                  {% else %}
+                    <a href="{{ url_for('logout') }}">Logout</a>
+                  {% endif %}
+                </li>
+            </ul>
+            <div class="menu-icon">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
     <div class="ngo-details-container">
         <div class="ngo-header">
             <img src="{{ ngo.image_url }}" alt="{{ ngo.name }}" class="ngo-image">

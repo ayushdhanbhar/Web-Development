@@ -159,6 +159,9 @@ p {
 a {
   color: black;
   text-decoration: none;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
 }
 .uy {
   position: relative;         /* Set position to relative */
@@ -190,6 +193,7 @@ a {
   top: 0;
   left: 0;
   z-index: 1000;
+  height:80px;
   /* display: flex;
   justify-content: space-evenly; */
 }

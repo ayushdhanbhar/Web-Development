@@ -16,6 +16,8 @@
       referrerpolicy="no-referrer"
     />
   </head>
+  <div class="bav"></div>
+  
   <section class="mission-vision-section">
     <div class="container">
       <div class="split-container">
@@ -61,6 +63,27 @@
     .nav {
       height: 600px;
       background-image: url("{{ url_for('static', filename='images/j7.jpeg') }}");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: top bottom;
+      margin-left: 10px;
+      margin-right: 10px;
+      margin: 10px;
+    }
+    .ov{
+      height: 600px;
+      background-image: url("{{ url_for('static', filename='images/cep16.jpg') }}");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: top bottom;
+      margin-left: 10px;
+      margin-right: 10px;
+      margin: 10px;
+      margin-bottom:20px;
+    }
+    .bav {
+      height: 600px;
+      background-image: url("{{ url_for('static', filename='images/cep12.jpg') }}");
       background-size: cover;
       background-repeat: no-repeat;
       background-position: top bottom;
@@ -158,33 +181,25 @@
     .contain {
       background-color: #989fa7;
     }
-    .logo{
-    height:90px;
-    background-image: url("{{ url_for('static', filename='images/pccoe.jpeg') }}");
-    background-size: cover;
-    background-repeat:no-repeat;
-    background-position:top-Bottom;
-    border-radius:20px;
-  } 
-  .zoom-text {
+  /* .zoom-text {
             font-size:30px;
             color: #333;
             animation: zoomIn 3s ease-in-out infinite alternate;
             text-align: center;
             /* margin-top: 40vh; */
-            margin-bottom: 35px;
+            /* margin-bottom: 35px;
         }
 
         @keyframes zoomIn {
             0% { transform: scale(1); }
             100% { transform: scale(1.5); }
-        }
+        }*/
   </style>
   <body>
     <nav class="navbar">
       <div class="cont">
         <div class="logo">
-          <a href="#">SatKarma</a>
+          <a href="#">..सत्कर्म..</a>
         </div>
         <ul class="nav-links">
           <li><a href="/">Home</a></li>
@@ -207,6 +222,7 @@
         </div>
       </div>
     </nav>
+    <div class="ov"></div>
     <!-- Events Section -->
     <h1 class="zoom-text">Team</h1>
     <div class="nav"></div>
@@ -246,8 +262,8 @@
         justify-content: center;
         align-items: center;
         height: 100vh;
-        margin-bottom:50px;
-        margin-top: 70px;
+        margin-bottom:30px;
+        margin-top:50px;
       "
     >
       <video

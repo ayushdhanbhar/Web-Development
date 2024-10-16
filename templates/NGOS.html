@@ -8,14 +8,6 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='homepage.css') }}">
 
     <style>
-        .logo{
-    height:90px;
-    background-image: url("{{ url_for('static', filename='images/pccoe.jpeg') }}");
-    background-size: cover;
-    background-repeat:no-repeat;
-    background-position:top-Bottom;
-    border-radius:20px;
-  } 
         .ngo-container {
             max-width: 1200px;
             margin: 150px auto 50px;
@@ -99,37 +91,33 @@
 
 <body>
     <!-- Navigation bar code from your existing templates -->
-        <div class="cont">
+        <nav class="navbar">
+          <div class="cont">
             <div class="logo">
-                <a href="#">SatKarma</a>
+              <a href="">..सत्कर्म..</a>
             </div>
-            <nav class="navbar">
-                <div class="cont">
-                    <div class="logo">
-                        <a href="#">SatKarma</a>
-                    </div>
-                    <ul class="nav-links">
-                        <li><a href="/">Home</a></li>
-                        <li><a href="/about">About Us</a></li>
-                        <li><a href="/transaction">Donate</a></li>
-                        <li><a href="/NGOS">NGO</a></li>
-                        <li><a href="/contact">Contact Us</a></li>
-                        <li>
-                            {% if 'user_id' not in session %}
-                            <a href="{{ url_for('login') }}">Sign In</a>
-                            {% else %}
-                            <a href="{{ url_for('logout') }}">Logout</a>
-                            {% endif %}
-                        </li>
-                    </ul>
-                    <div class="menu-icon">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
-                </div>
-            </nav>
-        </div>
+          
+            <ul class="nav-links">
+              <li><a href="/">Home</a></li>
+              <li><a href="/about">About Us</a></li>
+              <li><a href="/transaction">Donate</a></li>
+              <li><a href="/NGOS">NGO</a></li>
+              <li><a href="/contact">Contact Us</a></li>
+              <li>
+                  {% if 'user_id' not in session %}
+                    <a href="{{ url_for('login') }}">Sign In</a>
+                  {% else %}
+                    <a href="{{ url_for('logout') }}">Logout</a>
+                  {% endif %}
+                </li>
+            </ul>
+            <div class="menu-icon">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+
         <div class="container">
             <div class="animated-text">
               <h1 >Your Help Their Need...</h1>
