@@ -64,7 +64,7 @@ def login():
         email = request.form['email']
         password = request.form['password']
         user = mongo.db.users.find_one({'email': email})
-
+        
         if user and check_password_hash(user['password'], password):
             # Login user by storing user id in session
             session['user_id'] = str(user['_id'])
@@ -123,7 +123,6 @@ def register():
 
     return render_template('register.html')
 
-
 # Donation page
 @app.route('/donate')
 def donate():
@@ -133,14 +132,13 @@ def donate():
 
     return render_template('donate.html')
 
-
 # Logout
 @app.route('/logout')
 def logout():
     # Clear the user session
     session.pop('user_id', None)
     flash('Logged out successfully.')
-    
+
     # Redirect to the homepage after logout
     return redirect(url_for('homepage'))
 
@@ -169,12 +167,10 @@ def contact():
 
     return render_template('contact.html')
 
-
 # Thank you page after form submission
 @app.route('/thank_you')
 def thank_you():
     return render_template('thank_you.html')
-
 
 # About page
 @app.route('/about')
@@ -187,6 +183,7 @@ def ngos():
     # Fetch NGOs from the database
     ngos = list(mongo.db.ngos.find())
     return render_template('NGOS.html', ngos=ngos)
+
 
 # Individual NGO details page
 @app.route('/ngo/<ngo_id>')
@@ -278,13 +275,13 @@ def create_order():
         return jsonify({'order_id': order['id']})
     except Exception as e:
         return jsonify({'error': str(e)}), 500
-
+    
 # Verify payment
 @app.route('/verify_payment', methods=['POST'])
 def verify_payment():
     if 'user_id' not in session:
         return jsonify({'error': 'User not logged in'}), 401
-
+    
     data = request.json
     
     try:
@@ -309,9 +306,7 @@ def verify_payment():
         return jsonify({'status': 'success'})
     except Exception as e:
         return jsonify({'error': str(e)}), 500
-
-
-
+  
 # NGO details page
 @app.route('/ngo1')
 def ngo1():

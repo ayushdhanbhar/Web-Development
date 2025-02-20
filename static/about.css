@@ -86,12 +86,13 @@
     display: flex;
   }
 }
+
 .nav-links {
   margin-bottom: 10px;
 }
 
 .contain {
-  height: 60px;
+  height:60px;
   background-color: rgb(59, 78, 78);
   color: rgb(202, 198, 195);
   display: flex;
