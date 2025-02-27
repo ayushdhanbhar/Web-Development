@@ -23,7 +23,8 @@ mongo = PyMongo(app)
 
 # Send Email Function
 def send_email(user_email, user_name):
-    sender_email = 'aayushdhanbhar@gmail.com'  # Replace with your email
+    
+    sender_email = 'satkarmafoundation101@gmail.com'  # Replace with your email
     sender_password = 'mltj nriw ltsn sxvg'    # Replace with your email password
     subject = 'Welcome to Satkarma NGO'
     
@@ -75,7 +76,6 @@ def login():
             return render_template('sign.html', error_message=error_message)
 
     return render_template('sign.html')
-
 
 # Homepage - Displays NGO search
 @app.route('/', methods=['GET', 'POST'])
