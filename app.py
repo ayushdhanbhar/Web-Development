@@ -11,7 +11,6 @@ from email.message import EmailMessage
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '12333'  # Replace with your actual secret key
 app.config['MONGO_URI'] = "mongodb+srv://vedant:vedant@cluster0.1fi6w.mongodb.net/db"  # MongoDB connection URI
-razorpay_client = razorpay.Client(auth=("YOUR_KEY_ID", "YOUR_KEY_SECRET"))
 
 client = MongoClient("mongodb+srv://vedant:vedant@cluster0.1fi6w.mongodb.net/db")
 db = client['db']  # Replace with your database name
@@ -58,7 +57,6 @@ def send_email(user_email, user_name):
         print(f"Failed to send email to {user_email}: {str(e)}")
 
 # Sign in
-
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
@@ -142,8 +140,6 @@ def logout():
     # Redirect to the homepage after logout
     return redirect(url_for('homepage'))
 
-
-
 # Contact page
 @app.route('/contact', methods=['GET', 'POST'])
 def contact():
@@ -195,39 +191,8 @@ def ngo_details(ngo_id):
         flash('NGO not found.')
         return redirect(url_for('ngos'))
 
-# Add this to your existing code where you set up the database
-def setup_sample_ngos():
-    # Check if NGOs already exist
-    if mongo.db.ngos.count_documents({}) == 0:
-        sample_ngos = [
-            {
-                'name': 'Ayush NGO',
-                'description': 'Working towards environmental conservation and sustainable practices.',
-                'causes': ['Environment', 'Sustainability'],
-                'location': 'Mumbai, India',
-                'contact': 'contact@greenearthfoundation.org',
-                'image_url': 'https://th.bing.com/th/id/OIP.GiMp-KofBLcb54K-CTpm4QHaEK?w=282&h=180&c=7&r=0&o=5&pid=1.7'
-            },
-            {
-                'name': 'Soloman NGO',
-                'description': 'Providing education and support to underprivileged children.',
-                'causes': ['Education', 'Child Welfare'],
-                'location': 'Delhi, India',
-                'contact': 'info@happychildren.org',
-                'image_url': 'https://th.bing.com/th/id/OIP.GiMp-KofBLcb54K-CTpm4QHaEK?w=282&h=180&c=7&r=0&o=5&pid=1.7'
 
-            },
-            {
-                'name': 'Om NGO',
-                'description': 'Supporting and caring for elderly individuals in need.',
-                'causes': ['Elder Care', 'Healthcare'],
-                'location': 'Pune, India',
-                'contact': 'help@eldercaresociety.org',
-                'image_url': 'https://th.bing.com/th/id/OIP.GiMp-KofBLcb54K-CTpm4QHaEK?w=282&h=180&c=7&r=0&o=5&pid=1.7'
 
-            }
-        ]
-        mongo.db.ngos.insert_many(sample_ngos)
 
 
 
@@ -237,85 +202,78 @@ def transaction():
     if 'user_id' not in session:
         flash('Please login to make a donation.')
         return redirect(url_for('login'))
-    
+
     user = mongo.db.users.find_one({'_id': ObjectId(session['user_id'])})
     ngos = list(mongo.db.ngos.find())
-    return render_template('transaction.html', ngos=ngos, user=user, razorpay_key_id="YOUR_KEY_ID")
+    
+    return render_template('transaction.html', ngos=ngos, user=user)
 
-# Create Razorpay order
-@app.route('/create_order', methods=['POST'])
-def create_order():
+from flask_mail import Mail, Message
+
+# Flask-Mail Configuration
+app.config['MAIL_SERVER'] = 'smtp.gmail.com'
+app.config['MAIL_PORT'] = 587
+app.config['MAIL_USE_TLS'] = True
+app.config['MAIL_USE_SSL'] = False
+app.config['MAIL_USERNAME'] = 'satkarmafoundation101@gmail.com'  # Your Gmail ID
+app.config['MAIL_PASSWORD'] = 'kloh mapp tuwv oqys'  # Your Gmail app password
+app.config['MAIL_DEFAULT_SENDER'] = 'satkarmafoundation101@gmail.com'
+
+mail = Mail(app)
+
+@app.route('/process_payment', methods=['POST'])
+def process_payment():
     if 'user_id' not in session:
-        return jsonify({'error': 'User not logged in'}), 401
+        return jsonify({'status': 'error', 'message': 'User not authenticated'})
 
     data = request.json
-    amount = data.get('amount', 0) * 100  # Amount in paise
-    
-    order_data = {
+    ngo_id = data.get('ngo_id')
+    amount = data.get('amount')
+
+    if not ngo_id or not amount:
+        return jsonify({'status': 'error', 'message': 'Invalid data'})
+
+    user_id = session['user_id']
+
+    # Fetch user details from MongoDB
+    user = mongo.db.users.find_one({'_id': ObjectId(user_id)})
+    if not user:
+        return jsonify({'status': 'error', 'message': 'User not found'})
+
+    email = user['email']
+    user_name = user['fullname']
+
+    # Store payment data in MongoDB
+    payment_data = {
+        'user_id': ObjectId(user_id),
+        'ngo_id': ObjectId(ngo_id),
         'amount': amount,
-        'currency': 'INR',
-        'receipt': f'order_{ObjectId()}'
+        'status': 'success'  # Fake payment status
     }
-    
-    try:
-        order = razorpay_client.order.create(data=order_data)
-        
-        # Store order details in database
-        transaction_data = {
-            'user_id': ObjectId(session['user_id']),
-            'ngo_id': ObjectId(data['ngo_id']),
-            'amount': amount / 100,  # Store in rupees
-            'message': data.get('message', ''),
-            'order_id': order['id'],
-            'status': 'pending',
-            'created_at': datetime.utcnow()
-        }
-        mongo.db.transactions.insert_one(transaction_data)
-        
-        return jsonify({'order_id': order['id']})
-    except Exception as e:
-        return jsonify({'error': str(e)}), 500
-    
-# Verify payment
-@app.route('/verify_payment', methods=['POST'])
-def verify_payment():
-    if 'user_id' not in session:
-        return jsonify({'error': 'User not logged in'}), 401
-    
-    data = request.json
-    
-    try:
-        # Verify signature
-        params_dict = {
-            'razorpay_payment_id': data['razorpay_payment_id'],
-            'razorpay_order_id': data['razorpay_order_id'],
-            'razorpay_signature': data['razorpay_signature']
-        }
-        razorpay_client.utility.verify_payment_signature(params_dict)
-        
-        # Update transaction status
-        mongo.db.transactions.update_one(
-            {'order_id': data['razorpay_order_id']},
-            {'$set': {
-                'status': 'completed',
-                'payment_id': data['razorpay_payment_id'],
-                'completed_at': datetime.utcnow()
-            }}
-        )
-        
-        return jsonify({'status': 'success'})
-    except Exception as e:
-        return jsonify({'error': str(e)}), 500
-  
-# NGO details page
-@app.route('/ngo1')
-def ngo1():
-    return render_template('ngo1.html')
 
-@app.route('/yup')
-def yup():
-    return render_template('yup.html')
+    db.payments.insert_one(payment_data)
+
+    # Send Thank You Email to the User
+    subject = "Thank You for Your Donation - SatKarma"
+    message_body = f"""
+    Dear {user_name},
+
+    Thank you for your generous donation of ₹{amount} to support the NGO. Your support means a lot to us.
+
+    We truly appreciate your contribution to help those in need.
+
+    Regards,
+    SatKarma Team
+    """
+
+    msg = Message(subject, recipients=[email], body=message_body)
+    mail.send(msg)
+
+    return jsonify({'status': 'success'})
+
+# @app.route('/yup')
+# def yup():
+#     return render_template('yup.html')
 
 if __name__ == '__main__':
-    setup_sample_ngos()
     app.run(debug=True)

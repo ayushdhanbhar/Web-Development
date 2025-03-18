@@ -1,328 +1,884 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ ngo.name }} - SatKarma</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='homepage.css') }}">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ ngo.name }} - SatKarma</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='homepage.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <style>
-        .ngo-details-container {
-            max-width: 1200px;
-            margin: 150px auto 50px;
-            padding: 0 20px;
-        }
-        .ngo-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 40px;
-        }
-        .ngo-logo {
-            width: 200px;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 10px;
-            margin-right: 30px;
-        }
-        .ngo-info {
-            flex-grow: 1;
-        }
-        .ngo-title {
-            font-size: 36px;
-            margin-bottom: 10px;
-            color: #333;
-        }
-        .ngo-location {
-            font-size: 18px;
-            color: #666;
-            margin-bottom: 15px;
-        }
-        .ngo-causes {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-        .cause-tag {
-            background-color: #4CAF50;
-            color: white;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 14px;
-        }
-        .ngo-description {
-            font-size: 18px;
-            line-height: 1.6;
-            color: #444;
-            margin-bottom: 30px;
-        }
-        .action-buttons {
-            display: flex;
-            gap: 20px;
-        }
-        .action-button {
-            padding: 12px 30px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: background-color 0.3s ease;
-        }
-        .donate-button {
-            background-color: #4CAF50;
-            color: white;
-        }
-        .donate-button:hover {
-            background-color: #45a049;
-        }
-        .contact-button {
-            background-color: #2196F3;
-            color: white;
-        }
-        .contact-button:hover {
-            background-color: #1e87db;
-        }
-        .ngo-content {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 40px;
-        }
-        .ngo-main {
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        .ngo-sidebar {
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        .contact-info h3 {
-            font-size: 24px;
-            margin-bottom: 20px;
-            color: #333;
-        }
-        .contact-item {
-            margin-bottom: 15px;
-        }
-        .contact-item strong {
-            display: block;
-            margin-bottom: 5px;
-            color: #666;
-        }
-        .navbar {
-  background-color: #333;
-  color: white;
-  padding: 1em 0;
-  position: fixed;
-  width: 100%;
-  top: 0;
-  left: 0;
-  z-index: 1000;
-  height:90px;
-  /* display: flex;
-          justify-content: space-evenly; */
-}
-.navbar .cont {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 1200px;
-  margin: auto;
-  padding: 0 1em;
-}
+  <style>
+    :root {
+      --primary-color: #4CAF50;
+      --primary-hover: #45a049;
+      --secondary-color: #2196F3;
+      --secondary-hover: #1e87db;
+      --text-dark: #333;
+      --text-medium: #555;
+      --text-light: #888;
+      --background-light: #f8f9fa;
+      --white: #ffffff;
+      --shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+      --border-radius: 10px;
+      --transition: all 0.3s ease;
+    }
 
-.navbar .logo a {
-  color: rgb(255, 255, 255);
-  text-decoration: none;
-  font-size: 1.5em;
-  font-weight: bold;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-}
+    body {
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.6;
+      background-color: var(--background-light);
+      color: var(--text-dark);
+    }
 
-.navbar .nav-links {
-  list-style: none;
-  display: flex;
-  gap: 1em;
-}
+    /* Navigation Bar */
+    .navbar {
+      background-color: var(--white);
+      color: var(--text-dark);
+      padding: 0.8em 0;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      height: auto;
+      transition: var(--transition);
+    }
 
-.navbar .nav-links li a {
-  color: white;
-  text-decoration: none;
-  padding: 0.5em 1em;
-  border-radius: 3px;
-}
+    .navbar .cont {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: auto;
+      padding: 0 2em;
+    }
 
-.navbar .nav-links li a:hover {
-  background-color: #4caf50;
-}
+    .navbar .logo a {
+      color: var(--primary-color);
+      text-decoration: none;
+      font-size: 1.8em;
+      font-weight: 700;
+    }
 
-/* Mobile Menu Icon */
-.menu-icon {
-  display: none;
-  flex-direction: column;
-  cursor: pointer;
-}
+    .navbar .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 1.5em;
+      margin: 0;
+    }
 
-.menu-icon span {
-  background-color: white;
-  margin: 4px;
-  width: 25px;
-  height: 3px;
-}
+    .navbar .nav-links li a {
+      color: var(--text-dark);
+      text-decoration: none;
+      padding: 0.5em 1em;
+      border-radius: 25px;
+      font-weight: 500;
+      transition: var(--transition);
+    }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-  .navbar .nav-links {
-    display: none;
-    flex-direction: column;
-    width: 100%;
-    position: absolute;
-    top: 60px;
-    left: 0;
-    background-color: #333;
-    z-index: 1000;
-  }
+    .navbar .nav-links li a:hover {
+      background-color: var(--primary-color);
+      color: var(--white);
+    }
 
-  .navbar .nav-links.active {
-    display: flex;
-  }
+    /* Mobile Menu */
+    .menu-icon {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
 
-  .menu-icon {
-    display: flex;
-  }
-}
-.nav-links {
-  margin-bottom: 10px;
-}
-/* Media query for screens less than 500px */
-@media (max-width: 850px) {
-  /* Hide the navigation links */
-  .nav-links {
-    display: none;
-    flex-direction: column;
-    background-color: #000000;
-    position: absolute;
-    top: 60px;
-    right: 0;
-    width: 100%;
-    z-index: 999;
-  }
+    .menu-icon span {
+      background-color: var(--text-dark);
+      margin: 3px;
+      width: 25px;
+      height: 3px;
+      border-radius: 3px;
+      transition: var(--transition);
+    }
 
-  /* When the nav is active (clicked), display it */
-  .nav-links.active {
-    display: flex;
-  }
+    /* NGO Details Container */
+    .ngo-details-container {
+      max-width: 1200px;
+      margin: 120px auto 60px;
+      padding: 0 20px;
+    }
 
-  /* Show the menu icon on small screens */
-  .menu-icon {
-    display: block;
-    cursor: pointer;
-  }
+    /* NGO Header */
+    .ngo-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 40px;
+      padding: 20px;
+      background-color: var(--white);
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+    }
 
-  .menu-icon span {
-    display: block;
-    width: 25px;
-    height: 3px;
-    margin: 5px;
-    background-color: black;
-  }
+    .ngo-image {
+      width: 180px;
+      height: 180px;
+      object-fit: cover;
+      border-radius: var(--border-radius);
+      margin-right: 30px;
+      box-shadow: var(--shadow);
+    }
 
-  .nav-links li {
-    text-align: center;
-    margin: 10px 0;
-  }
+    .ngo-info {
+      flex-grow: 1;
+    }
 
-  .nav-links a {
-    color: black;
-    text-decoration: none;
-    font-size: 18px;
-    padding: 10px;
-  }
-}
-    </style>
+    .ngo-title {
+      font-size: 32px;
+      margin-bottom: 10px;
+      color: var(--text-dark);
+    }
+
+    .ngo-location {
+      font-size: 16px;
+      color: var(--text-medium);
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+    }
+
+    .ngo-location i {
+      margin-right: 8px;
+      color: var(--primary-color);
+    }
+
+    .ngo-causes {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .cause-tag {
+      background-color: var(--primary-color);
+      color: var(--white);
+      padding: 5px 15px;
+      border-radius: 20px;
+      font-size: 14px;
+      display: inline-flex;
+      align-items: center;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .cause-tag i {
+      margin-right: 5px;
+    }
+
+    .action-buttons {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .action-button {
+      padding: 12px 25px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .action-button i {
+      margin-right: 8px;
+    }
+
+    .donate-button {
+      background-color: var(--primary-color);
+      color: var(--white);
+    }
+
+    .donate-button:hover {
+      background-color: var(--primary-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .contact-button {
+      background-color: var(--secondary-color);
+      color: var(--white);
+    }
+
+    .contact-button:hover {
+      background-color: var(--secondary-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    /* NGO Content */
+    .ngo-content {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 30px;
+    }
+
+    .ngo-main {
+      background: var(--white);
+      padding: 30px;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+    }
+
+    .ngo-main h2 {
+      font-size: 24px;
+      margin: 20px 0;
+      color: var(--text-dark);
+      position: relative;
+      padding-bottom: 10px;
+    }
+
+    .ngo-main h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 60px;
+      height: 3px;
+      background-color: var(--primary-color);
+      border-radius: 5px;
+    }
+
+    .ngo-main h2:first-child {
+      margin-top: 0;
+    }
+
+    .ngo-description {
+      font-size: 16px;
+      line-height: 1.8;
+      color: var(--text-medium);
+      margin-bottom: 25px;
+    }
+
+    .ngo-sidebar {
+      background: var(--white);
+      padding: 30px;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+    }
+
+    .contact-info h3 {
+      font-size: 22px;
+      margin-bottom: 20px;
+      color: var(--text-dark);
+      position: relative;
+      padding-bottom: 10px;
+    }
+
+    .contact-info h3::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 50px;
+      height: 3px;
+      background-color: var(--primary-color);
+      border-radius: 5px;
+    }
+
+    .contact-item {
+      margin-bottom: 20px;
+      padding-left: 10px;
+      border-left: 3px solid var(--primary-color);
+    }
+
+    .contact-item strong {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--text-medium);
+      font-weight: 600;
+    }
+
+    .contact-item p {
+      color: var(--text-dark);
+    }
+
+    .contact-item i {
+      margin-right: 8px;
+      color: var(--primary-color);
+    }
+
+    /* Footer */
+    .footer-container {
+      background-color: var(--white);
+      padding: 20px 0;
+      text-align: center;
+      box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+      margin-top: 60px;
+    }
+
+    .copyright {
+      color: var(--text-medium);
+      font-size: 14px;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 992px) {
+      .ngo-content {
+        grid-template-columns: 1fr;
+      }
+
+      .ngo-header {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .ngo-image {
+        margin-right: 0;
+        margin-bottom: 20px;
+      }
+
+      .ngo-causes {
+        justify-content: center;
+      }
+
+      .action-buttons {
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .navbar .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: var(--white);
+        padding: 20px 0;
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .navbar .nav-links.active {
+        display: flex;
+      }
+
+      .navbar .nav-links li {
+        margin: 10px 0;
+        text-align: center;
+      }
+
+      .menu-icon {
+        display: flex;
+      }
+
+      .ngo-header {
+        padding: 15px;
+      }
+
+      .ngo-title {
+        font-size: 28px;
+      }
+
+      .ngo-main,
+      .ngo-sidebar {
+        padding: 20px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .navbar .cont {
+        padding: 0 1em;
+      }
+
+      .ngo-image {
+        width: 120px;
+        height: 120px;
+      }
+
+      .action-buttons {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .action-button {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .ngo-details-container {
+        margin-top: 100px;
+      }
+    }
+  </style>
 </head>
+
 <body>
-    <!-- Navigation bar -->
-        <nav class="navbar">
-          <div class="cont">
-            <div class="logo">
-              <a href="">..सत्कर्म..</a>
-            </div>
-          
-            <ul class="nav-links">
-              <li><a href="/">Home</a></li>
-              <li><a href="/about">About Us</a></li>
-              <li><a href="/transaction">Donate</a></li>
-              <li><a href="/NGOS">NGO</a></li>
-              <li><a href="/contact">Contact Us</a></li>
-              <li>
-                  {% if 'user_id' not in session %}
-                    <a href="{{ url_for('login') }}">Sign In</a>
-                  {% else %}
-                    <a href="{{ url_for('logout') }}">Logout</a>
-                  {% endif %}
-                </li>
-            </ul>
-            <div class="menu-icon">
-              <span></span>
-              <span></span>
-              <span></span>
-            </div>
+  <!-- Navigation bar -->
+  <nav class="navbar">
+    <div class="cont">
+      <div class="logo">
+        <a href="/">..सत्कर्म..</a>
+      </div>
+
+      <ul class="nav-links">
+        <li><a href="/"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="/about"><i class="fas fa-info-circle"></i> About Us</a></li>
+        <li><a href="/transaction"><i class="fas fa-hand-holding-heart"></i> Donate</a></li>
+        <li><a href="/NGOS"><i class="fas fa-building"></i> NGO</a></li>
+        <li><a href="/contact"><i class="fas fa-envelope"></i> Contact</a></li>
+        <li>
+          {% if 'user_id' not in session %}
+          <a href="{{ url_for('login') }}"><i class="fas fa-sign-in-alt"></i> Sign In</a>
+          {% else %}
+          <a href="{{ url_for('logout') }}"><i class="fas fa-sign-out-alt"></i> Logout</a>
+          {% endif %}
+        </li>
+      </ul>
+      <div class="menu-icon" id="menu-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </nav>
+
+  <div class="ngo-details-container">
+    <!-- NGO Header with logo and basic info -->
+    <div class="ngo-header">
+      <img src="{{ ngo.image_url }}" alt="{{ ngo.name }}" class="ngo-image">
+      <div class="ngo-info">
+        <h1 class="ngo-title">{{ ngo.name }}</h1>
+        <p class="ngo-location"><i class="fas fa-map-marker-alt"></i> {{ ngo.location }}</p>
+        <div class="ngo-causes">
+          {% for cause in ngo.causes %}
+          <span class="cause-tag"><i class="fas fa-tag"></i> {{ cause }}</span>
+          {% endfor %}
+        </div>
+        <div class="action-buttons">
+          <a href="{{ url_for('transaction') }}" class="action-button donate-button">
+            <i class="fas fa-donate"></i> Donate Now
+          </a>
+          <a href="/contact" class="action-button contact-button">
+            <i class="fas fa-envelope"></i> Contact NGO
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main content area -->
+    <div class="ngo-content">
+      <div class="ngo-main">
+        <h2>About Us</h2>
+        <p class="ngo-description">{{ ngo.about }}</p>
+
+        <h2>Our Impact</h2>
+        <p class="ngo-description">Here you can add detailed information about the NGO's impact, projects, and
+          achievements. Explain how donations are used and the difference they make in the community. Include statistics
+          and success stories to demonstrate real-world impact.</p>
+
+        <h2>How You Can Help</h2>
+        <p class="ngo-description">Explain different ways people can contribute to the NGO's cause, whether through
+          donations, volunteering, or other forms of support. Highlight specific needs and opportunities for involvement
+          that match different interests and availability.</p>
+        <h2>Our Programs</h2>
+        <p class="ngo-description">We run several ongoing programs to address the needs of our community. Each program
+          is designed to create sustainable impact and empower those we serve. Our initiatives focus on education,
+          healthcare, sustainability, and community development.</p>
+
+        <h2>Testimonials</h2>
+        <div class="testimonial-section">
+          <div class="testimonial">
+            <p>"The support from {{ ngo.name }} has been life-changing for our community. Their dedication to our cause
+              has resulted in meaningful improvements for everyone involved."</p>
+            <div class="testimonial-author">- Community Member</div>
           </div>
-          </nav>
-    <div class="ngo-details-container">
-        <div class="ngo-header">
-            <img src="{{ ngo.image_url }}" alt="{{ ngo.name }}" class="ngo-image">
-                <div class="ngo-info">
-                <h1 class="ngo-title">{{ ngo.name }}</h1>
-                <p class="ngo-location">{{ ngo.location }}</p>
-                <div class="ngo-causes">
-                    {% for cause in ngo.causes %}
-                    <span class="cause-tag">{{ cause }}</span>
-                    {% endfor %}
-                </div>
-                <div class="action-buttons">
-                    <a href="{{ url_for('transaction') }}" class="action-button donate-button">Donate Now</a>
-                    <a href="/contact" class="action-button contact-button">Contact NGO</a>
-                </div>
-            </div>
+        </div>
+      </div>
+
+      <div class="ngo-sidebar">
+        <div class="contact-info" id="contact">
+          <h3>Contact Information</h3>
+          <div class="contact-item">
+            <strong><i class="fas fa-envelope"></i> Email</strong>
+            <p>{{ ngo.contact }}</p>
+          </div>
+          <div class="contact-item">
+            <strong><i class="fas fa-map-marker-alt"></i> Address</strong>
+            <p>{{ ngo.location }}</p>
+          </div>
+          <div class="contact-item">
+            <strong><i class="fas fa-phone"></i> Phone</strong>
+            <p>{{ ngo.phone|default('+91 1234567890') }}</p>
+          </div>
         </div>
 
-        <div class="ngo-content">
-            <div class="ngo-main">
-                <h2>About Us</h2>
-                <p class="ngo-description">{{ ngo.description }}</p>
-                
-                <h2>Our Impact</h2>
-                <p>Here you can add detailed information about the NGO's impact, projects, and achievements.</p>
-                
-                <h2>How You Can Help</h2>
-                <p>Explain different ways people can contribute to the NGO's cause, whether through donations, volunteering, or other forms of support.</p>
-            </div>
-            
-            <div class="ngo-sidebar">
-                <div class="contact-info" id="contact">
-                    <h3>Contact Information</h3>
-                    <div class="contact-item">
-                        <strong>Email:</strong>
-                        {{ ngo.contact }}
-                    </div>
-                    <div class="contact-item">
-                        <strong>Address:</strong>
-                        {{ ngo.location }}
-                    </div>
-                    <!-- Add more contact details as needed -->
-                </div>
-            </div>
+        <div class="social-links">
+          <h3>Follow Us</h3>
+          <div class="social-icons">
+            <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+          </div>
         </div>
-    </div>
 
-    <!-- Footer -->
-    <div class="footer-container">
-        <div class="copyright">
-            © 2024 SatKarma. All Rights Reserved.
+        <div class="donation-info">
+          <h3>Support Our Work</h3>
+          <p>Your contributions enable us to continue our mission and expand our impact.</p>
+          <a href="{{ url_for('transaction') }}" class="sidebar-donate-btn">
+            <i class="fas fa-heart"></i> Make a Donation
+          </a>
         </div>
+      </div>
     </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer-container">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>About SatKarma</h4>
+        <p>Connecting donors with authentic NGOs to create lasting social impact.</p>
+      </div>
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/about">About Us</a></li>
+          <li><a href="/NGOS">Browse NGOs</a></li>
+          <li><a href="/contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Get in Touch</h4>
+        <p><i class="fas fa-envelope"></i> info@satkarma.org</p>
+        <p><i class="fas fa-phone"></i> +91 1234567890</p>
+      </div>
+    </div>
+    <div class="copyright">
+      © 2024 SatKarma. All Rights Reserved.
+    </div>
+  </div>
+
+  <!-- JavaScript for mobile menu toggle -->
+  <script>
+    document.getElementById('menu-toggle').addEventListener('click', function () {
+      document.querySelector('.nav-links').classList.toggle('active');
+
+      // Animate hamburger to X
+      const spans = this.querySelectorAll('span');
+      this.classList.toggle('active');
+
+      if (this.classList.contains('active')) {
+        spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+        spans[1].style.opacity = '0';
+        spans[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
+      } else {
+        spans[0].style.transform = 'none';
+        spans[1].style.opacity = '1';
+        spans[2].style.transform = 'none';
+      }
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', function (event) {
+      const isClickInsideMenu = document.getElementById('menu-toggle').contains(event.target);
+      const isClickInsideNav = event.target.closest('.nav-links');
+
+      if (!isClickInsideMenu && !isClickInsideNav && document.querySelector('.nav-links').classList.contains('active')) {
+        document.querySelector('.nav-links').classList.remove('active');
+        const spans = document.getElementById('menu-toggle').querySelectorAll('span');
+        document.getElementById('menu-toggle').classList.remove('active');
+        spans[0].style.transform = 'none';
+        spans[1].style.opacity = '1';
+        spans[2].style.transform = 'none';
+      }
+    });
+  </script>
+
+  <style>
+    /* Additional styles for the enhanced page */
+    .testimonial-section {
+      margin-top: 20px;
+    }
+
+    .testimonial {
+      background-color: rgba(76, 175, 80, 0.1);
+      padding: 20px;
+      border-radius: var(--border-radius);
+      border-left: 4px solid var(--primary-color);
+    }
+
+    .testimonial p {
+      font-style: italic;
+      margin-bottom: 10px;
+    }
+
+    .testimonial-author {
+      font-weight: 600;
+      text-align: right;
+    }
+
+    .social-links {
+      margin-top: 30px;
+    }
+
+    .social-links h3 {
+      font-size: 22px;
+      margin-bottom: 20px;
+      color: var(--text-dark);
+      position: relative;
+      padding-bottom: 10px;
+    }
+
+    .social-links h3::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 50px;
+      height: 3px;
+      background-color: var(--primary-color);
+      border-radius: 5px;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 15px;
+    }
+
+    .social-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: var(--text-dark);
+      color: var(--white);
+      transition: var(--transition);
+    }
+
+    .social-icon:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .social-icon i {
+      font-size: 18px;
+    }
+
+    .fa-facebook-f {
+      background-color: #3b5998;
+    }
+
+    .fa-twitter {
+      background-color: #1da1f2;
+    }
+
+    .fa-instagram {
+      background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);
+    }
+
+    .fa-linkedin-in {
+      background-color: #0077b5;
+    }
+
+    .donation-info {
+      margin-top: 30px;
+    }
+
+    .donation-info h3 {
+      font-size: 22px;
+      margin-bottom: 15px;
+      color: var(--text-dark);
+      position: relative;
+      padding-bottom: 10px;
+    }
+
+    .donation-info h3::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 50px;
+      height: 3px;
+      background-color: var(--primary-color);
+      border-radius: 5px;
+    }
+
+    .donation-info p {
+      margin-bottom: 15px;
+      color: var(--text-medium);
+    }
+
+    .sidebar-donate-btn {
+      display: block;
+      background-color: var(--primary-color);
+      color: var(--white);
+      padding: 12px 20px;
+      text-align: center;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: var(--transition);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .sidebar-donate-btn:hover {
+      background-color: var(--primary-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .sidebar-donate-btn i {
+      margin-right: 5px;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 30px 20px 20px;
+      flex-wrap: wrap;
+    }
+
+    .footer-section {
+      flex: 1;
+      min-width: 200px;
+      margin-bottom: 20px;
+      padding: 0 15px;
+    }
+
+    .footer-section h4 {
+      color: var(--text-dark);
+      margin-bottom: 15px;
+      position: relative;
+      padding-bottom: 10px;
+      font-size: 18px;
+    }
+
+    .footer-section h4::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 40px;
+      height: 2px;
+      background-color: var(--primary-color);
+    }
+
+    .footer-section p {
+      color: var(--text-medium);
+      margin-bottom: 10px;
+      font-size: 14px;
+    }
+
+    .footer-section ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-section ul li {
+      margin-bottom: 8px;
+    }
+
+    .footer-section ul li a {
+      color: var(--text-medium);
+      text-decoration: none;
+      transition: var(--transition);
+      font-size: 14px;
+    }
+
+    .footer-section ul li a:hover {
+      color: var(--primary-color);
+      padding-left: 5px;
+    }
+
+    .footer-section i {
+      margin-right: 8px;
+      color: var(--primary-color);
+    }
+
+    @media (max-width: 768px) {
+      .footer-content {
+        flex-direction: column;
+      }
+
+      .footer-section {
+        margin-bottom: 30px;
+      }
+    }
+
+    /* Menu icon animation */
+    .menu-icon.active span {
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    /* Scroll to top button */
+    .scroll-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 50px;
+      height: 50px;
+      background-color: var(--primary-color);
+      color: var(--white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      opacity: 0;
+      transition: var(--transition);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      z-index: 999;
+    }
+
+    .scroll-top.visible {
+      opacity: 1;
+    }
+
+    .scroll-top:hover {
+      background-color: var(--primary-hover);
+      transform: translateY(-3px);
+    }
+  </style>
+
+  <!-- Scroll to top button -->
+  <div class="scroll-top" id="scrollTop">
+    <i class="fas fa-arrow-up"></i>
+  </div>
+
+  <script>
+    // Scroll to top functionality
+    const scrollTopBtn = document.getElementById('scrollTop');
+
+    window.addEventListener('scroll', function () {
+      if (window.pageYOffset > 300) {
+        scrollTopBtn.classList.add('visible');
+      } else {
+        scrollTopBtn.classList.remove('visible');
+      }
+    });
+
+    scrollTopBtn.addEventListener('click', function () {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+  </script>
 </body>
+
 </html>
