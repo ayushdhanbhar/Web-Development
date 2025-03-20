@@ -107,79 +107,13 @@ h2 {
 }
 .nav {
   height: 500px;
-  background-image: url("j7.jpeg");
+  background-image: url("pict.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: top bottom;
   margin-left: 10px;
   margin-right: 10px;
   margin: 10px;
-}
-#two {
-  display: flex;
-  font-weight: 900;
-  justify-content: center;
-}
-.eoxmain {
-  display: flex;
-  justify-content: space-evenly;
-  margin: 10px 10px;
-  gap: 10px;
-}
-.eox1 {
-  height: 220px;
-  width: 220px;
-  border-radius: 50%;
-  background-image: url("girl.png");
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-.eox2 {
-  height: 220px;
-  width: 220px;
-  border-radius: 50%;
-  background-image: url("ayush.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-.eox3 {
-  height: 220px;
-  width: 220px;
-  border-radius: 50%;
-  background-image: url("solo.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-.eoxmain2 {
-  display: flex;
-  justify-content: space-evenly;
-  margin-top:30px;
-  margin-bottom: 20px;
-  gap: 10px;
-}
-.oox4 {
-  height: 220px;
-  width: 220px;
-  border-radius:20px;
-  background-image: url("om2.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-.oox5 {
-  height: 220px;
-  width: 220px;
-  border-radius: 50%;
-  background-image: url("harsh.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-.eox6 {
-  height: 220px;
-  width: 220px;
-  border-radius: 50%;
-  background-image: url("prashik.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
 }
 #ede {
   margin-top: 232px;
@@ -301,13 +235,6 @@ ul a {
   justify-content: center;
   text-align: center;
 }
-
-#video1 {
-  height: 500px;
-  margin-left: 120px;
-  margin-top: 10px;
-}
-
 a {
   color: black;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
@@ -385,12 +312,6 @@ h2 {
 }
 /*css for foundation*/
 /* General Styles */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 body {
   font-family: 'Raleway', sans-serif;
   background-color: #f4f4f4;
@@ -817,12 +738,6 @@ body {
     width: 100%;
     margin-bottom: 20px;
   }
-
-  video {
-    width: 100%;
-    height: auto;
-  }
-
   footer ul {
     text-align: center;
     padding: 0;
@@ -839,32 +754,14 @@ body {
     margin: 10px 0;
   }
 }
-
-/* For screens smaller than 480px (mobile devices) */
-@media (max-width: 480px) {
-  h1, p {
-    font-size: 18px;
-  }
-
-  .eox1, .eox2, .eox3, .oox4, .oox5, .eox6 {
-    scale: 1;
-    margin-bottom: 10px;
-  }
-
-  footer ul p {
-    font-size: 18px;
-  }
-
-  footer ul a {
-    font-size: 16px;
-  }
-
-  .copyright {
-    font-size: 14px;
-  }
-}
 #teo{
   font-size:18px;
   color: #0f1111;
   font-family:'Times New Roman', Times, serif;
+}
+.pop{
+  background-image: url("pict.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height:500px;
 }
