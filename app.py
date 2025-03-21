@@ -1,9 +1,7 @@
-import datetime
 from flask import Flask, jsonify, render_template, redirect, url_for, flash, request, session
 from flask_pymongo import PyMongo
 from werkzeug.security import generate_password_hash, check_password_hash
 from bson.objectid import ObjectId
-import razorpay
 from pymongo import MongoClient
 import smtplib
 from email.message import EmailMessage

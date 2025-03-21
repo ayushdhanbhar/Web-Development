@@ -8,135 +8,6 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='homepage.css') }}">
 
     <style>
-        .navbar {
-  background-color: #333;
-  color: white;
-  padding: 1em 0;
-  position: fixed;
-  width: 100%;
-  top: 0;
-  left: 0;
-  z-index: 1000;
-  height:90px;
-  /* display: flex;
-          justify-content: space-evenly; */
-}
-.navbar .cont {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 1200px;
-  margin: auto;
-  padding: 0 1em;
-}
-
-.navbar .logo a {
-  color: rgb(255, 255, 255);
-  text-decoration: none;
-  font-size: 1.5em;
-  font-weight: bold;
-}
-
-.navbar .nav-links {
-  list-style: none;
-  display: flex;
-  gap: 1em;
-}
-
-.navbar .nav-links li a {
-  color: white;
-  text-decoration: none;
-  padding: 0.5em 1em;
-  border-radius: 3px;
-}
-
-.navbar .nav-links li a:hover {
-  background-color: #79af7b;
-}
-
-/* Mobile Menu Icon */
-.menu-icon {
-  display: none;
-  flex-direction: column;
-  cursor: pointer;
-}
-
-.menu-icon span {
-  background-color: white;
-  margin: 4px;
-  width: 25px;
-  height: 3px;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  .navbar .nav-links {
-    display: none;
-    flex-direction: column;
-    width: 100%;
-    position: absolute;
-    top: 60px;
-    left: 0;
-    background-color: #333;
-    z-index: 1000;
-  }
-
-  .navbar .nav-links.active {
-    display: flex;
-  }
-
-  .menu-icon {
-    display: flex;
-  }
-}
-.nav-links {
-  margin-bottom: 10px;
-}
-/* Media query for screens less than 500px */
-@media (max-width: 850px) {
-  /* Hide the navigation links */
-  .nav-links {
-    display: none;
-    flex-direction: column;
-    background-color: #000000;
-    position: absolute;
-    top: 60px;
-    right: 0;
-    width: 100%;
-    z-index: 999;
-  }
-
-  /* When the nav is active (clicked), display it */
-  .nav-links.active {
-    display: flex;
-  }
-
-  /* Show the menu icon on small screens */
-  .menu-icon {
-    display: block;
-    cursor: pointer;
-  }
-
-  .menu-icon span {
-    display: block;
-    width: 25px;
-    height: 3px;
-    margin: 5px;
-    background-color: black;
-  }
-
-  .nav-links li {
-    text-align: center;
-    margin: 10px 0;
-  }
-
-  .nav-links a {
-    color: black;
-    text-decoration: none;
-    font-size: 18px;
-    padding: 10px;
-  }
-}
         .ngo-container {
             max-width: 1200px;
             margin: 150px auto 50px;
@@ -215,6 +86,9 @@
     .container{
         margin-top:200px;
     }
+    .ry{
+      margin:20px 0px;
+    }
     </style>
 </head>
 
@@ -250,7 +124,7 @@
 
         <div class="container">
             <div class="animated-text">
-              <h1 >Your Help Their Need...</h1>
+              <h1>Your Help Their Need...</h1>
             </div>
           </div>
     <div class="ngo-container">
