@@ -189,12 +189,6 @@ def ngo_details(ngo_id):
         flash('NGO not found.')
         return redirect(url_for('ngos'))
 
-
-
-
-
-
-
 @app.route('/transaction')
 def transaction():
     if 'user_id' not in session:
