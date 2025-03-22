@@ -125,7 +125,6 @@ def donate():
     if 'user_id' not in session:
         flash('You need to log in to donate.')
         return redirect(url_for('login'))
-
     return render_template('donate.html')
 
 # Logout
